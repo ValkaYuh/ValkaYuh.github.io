@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin Enchev - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.10/htmx.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --text-color: #1d1d1f;
+            --accent-color: #0071e3;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1d1d1f;
+                --text-color: #f5f5f7;
+                --accent-color: #2997ff;
+                --card-bg: #2d2d2f;
+                --card-shadow: rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        header {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        header p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s 0.2s forwards;
+        }
+
+        section.about {
+            padding: 2rem 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s 0.4s forwards;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s 0.5s forwards;
+        }
+        
+        .experience {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+        
+        .experience-item-1 {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .experience-item-1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--card-shadow);
+        }
+		
+		.experience-item-2 {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .experience-item-2:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--card-shadow);
+        }
+        
+        .job-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .job-duration {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .job-description {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 1.5rem;
+            padding: 2rem 0 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:nth-child(1) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .project-card:nth-child(2) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .project-card:nth-child(3) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .project-card:nth-child(4) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--card-shadow);
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .project-card .tag {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .project-card .tag {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .project-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            padding: 2rem;
+        }
+
+        .project-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .project-details {
+            background-color: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 4rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card:nth-child(n) {
+                grid-column: span 1;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Valentin Enchev</h1>
+        <p class="subtitle">Self taught dev & e-sports enthusiast</p>
+    </header>
+
+    <section class="about" id="about-section">
+        <p>No buzzwords here—I'm a mostly self-taught dev with a little over 2 years of experience in software QA, both manual and automation. I'm always eager to dive into new tech, I've primarily worked with Python, C++, and Java. Oh, and I love tinkering with hardware too!</p>
+    </section>
+	
+	<h2 class="section-title">Experience</h2>
+    
+    <section class="experience">
+        <div class="experience-item-1">
+            <h3 class="job-title">Software QA Engineer Internship @ TalkRemit</h3>
+            <p class="job-duration">November 2022 - May 2023</p>
+            <p class="job-description">During my internship, I gained hands-on experience with the entire software development lifecycle and developed a strong foundation in quality assurance methodologies. I quickly adapted to using Java—a programming language new to me—and became proficient in utilizing Jira for efficient issue tracking and team collaboration. This immersive experience not only deepened my technical skills but also enhanced my ability to contribute effectively to a dynamic development environment.</p>
+        </div>
+		<div class="experience-item-2">
+            <h3 class="job-title">Software QA Engineer @ TalkRemit</h3>
+            <p class="job-duration">June 2022 - January 2025</p>
+            <p class="job-description">After transitioning to a full-time role as a Software QA Engineer, I leveraged my internship experience to excel in both manual and automated testing. I played a key role in the expansion of the existing automation testing,  while also conducting meticulous manual tests to identify and resolve quality issues. My proactive approach allowed me to detect and swiftly address live production bugs,  ensuring the reliability and integrity of our software. Throughout this role, I continued to utilize tools like Jira for effective issue tracking and collaborated closely with the development team to improve overall product quality.</p>
+        </div>
+    </section>
+	
+	<h2 class="section-title">Projects</h2>
+
+    <div class="bento-grid">
+		<div class="project-card" 
+			onclick="showProject('project-0-detail')">
+            <h3>FlightInc</h3>
+            <p>A game about spotting and correcting errors in flight details. Made during a game jam. Rank #142 in the Inovation category and overall rank of #664. (there were 2199 entries total)</p>
+            <div class="tags">
+                <span class="tag">GDscript</span>
+                <span class="tag">Godot</span>
+            </div>
+        </div>
+		
+		<div class="project-card" 
+			onclick="showProject('project-1-detail')">
+            <h3>vSec</h3>
+            <p>A Discord security bot that flags malicious links and kicks repeat offenders.</p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">HTML</span>
+                <span class="tag">Selenium</span>
+            </div>
+        </div>
+
+		<div class="project-card"
+			onclick="showProject('project-2-detail')">
+            <h3>vFOD</h3>
+            <p>Tool that disables Fullscreen Optimizations for the applications that you select.</p>
+            <div class="tags">
+                <span class="tag">C++</span>
+            </div>
+        </div>
+
+        <div class="project-card"
+			onclick="showProject('project-3-detail')">
+            <h3>vTracker</h3>
+            <p>A python script that automatically updates/imports entries in a excel sheet, mainly used for tracking certain valorant pro players' settings</p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Selenium</span>
+                <span class="tag">Excel</span>
+            </div>
+        </div>
+
+        <div class="project-card"
+            onclick="showProject('project-4-detail')">
+            <h3>vFinder</h3>
+            <p>Script that finds the highest damage Jhin build, for the latest patch.</p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">RiotAPI</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-overlay" id="project-overlay">
+        <div class="project-details">
+            <button class="close-btn" onclick="document.getElementById('project-overlay').classList.remove('active')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="project-detail-content"></div>
+        </div>
+    </div>
+
+    <div class="project-overlay" id="project-overlay">
+        <div class="project-details">
+            <button class="close-btn" onclick="document.getElementById('project-overlay').classList.remove('active')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="project-detail-content"></div>
+        </div>
+    </div>
+    
+    <script>
+        function showProject(templateId) {
+            const template = document.getElementById(templateId);
+            const content = template.innerHTML;
+            
+            document.getElementById('project-detail-content').innerHTML = content;
+            
+            document.getElementById('project-overlay').classList.add('active');
+        }
+    </script>
+
+
+	<template id="project-0-detail">
+        <h2>FlightInc</h2>
+        <p>I've always wanted to make a game, and this is exactly what I did in the Brackeys 2025 game jam. FlightInc is a game inspired by games like Overcooked, where the game is supposed to make you stress a little bit. This was the first time that I developed anything in Godot, so the 7 days weren't quite enough to iron out all the bugs and add everything that I wanted, but I like to think that it was a good first attempt. My good friend Konstantinos Kontargyris did all the art, and I did all the coding.</p>
+		<a href="https://itch.io/jam/brackeys-13/rate/3347380" aria-label="ItchIo"><i class="fa-brands fa-itch-io" style="color: #ff6b6b; font-size: 1.2rem;"></i>
+    </template>
+	
+    <template id="project-1-detail">
+        <h2>vSec</h2>
+        <p>I like to build stuff that I would actually use, and this is one of those super useful tools (to me at least). In my friend group's Discord server, we occasionally have people who get infected with a virus that starts spreading malicious links, spamming them in every channel. This bot saves us the hassle of deleting all those messages manually. It even kicks the user after 3 malicious links sent to prevent them from spamming further, making moderation considerably easier, and preventing further infections.</p>
+		<a href="https://github.com/ValkaYuh/vSec" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+    </template>
+
+    <template id="project-2-detail">
+        <h2>vFOD</h2>
+        <p>Disabling full-screen optimizations on Windows 10 used to be easy on older builds because you could disable it with one registry edit globally for all programs. Unfortunately, after version 1803, this option was removed, making it very annoying to disable it manually for each program/game. With this tool you can disable it just by navigating to your desired app's directory, eliminating the need to go through multiple menus for each app.</p>
+		<a href="https://github.com/ValkaYuh/vFOD" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+    </template>
+
+    <template id="project-3-detail">
+        <h2>vTracker</h2>
+        <p>I'm a big fan of e-sports, which is why I wrote this script. It lets me keep track of what gear and settings my favorite players use without having to manually log their information. The script can generate the base template, and then you can start adding players by pasting their prosettings.net profile link. Once you're done, you can update the whole sheet with one command.</p>
+		<a href="https://github.com/ValkaYuh/vTracker" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+    </template>
+
+    <template id="project-4-detail">
+        <h2>vFinder</h2>
+        <p>vFinder is a script that I mostly made to get myself familiar with the Riot API. It gets the latest patch information and calculates the highest damage build for Jhin (a League of Legends character). The script doesn't account for any special status effects since those are written in plain text, but I could in theory use an LLM to account for them too.</p>
+		<a href="https://github.com/ValkaYuh/vFinder" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+    </template>
+
+    <footer>
+        <p>&copy; 2025 Valentin Enchev. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/ValkaYuh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linktr.ee/valentinenchev" aria-label="Linktree"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
