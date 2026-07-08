@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentin Enchev - Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.10/htmx.min.js"></script>
+    <meta name="description" content="Valentin Enchev, QA Engineer with 2+ years of manual and automated testing experience, self-taught in machine learning.">
+    <title>Valentin Enchev - QA Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -13,6 +13,8 @@
             --accent-color: #0071e3;
             --card-bg: #ffffff;
             --card-shadow: rgba(0, 0, 0, 0.1);
+            --card-border: rgba(0, 0, 0, 0.04);
+            --tag-bg: rgba(0, 113, 227, 0.08);
             --transition: all 0.3s ease;
         }
 
@@ -23,6 +25,8 @@
                 --accent-color: #2997ff;
                 --card-bg: #2d2d2f;
                 --card-shadow: rgba(0, 0, 0, 0.2);
+                --card-border: rgba(255, 255, 255, 0.06);
+                --tag-bg: rgba(41, 151, 255, 0.14);
             }
         }
 
@@ -38,165 +42,282 @@
             color: var(--text-color);
             line-height: 1.6;
             padding: 0 5%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             transition: var(--transition);
         }
 
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--card-shadow);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- Header ---------- */
         header {
-            padding: 4rem 0 2rem;
+            padding: 4rem 0 1rem;
             text-align: center;
         }
 
         header h1 {
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
+            margin-bottom: 0.25rem;
         }
 
         header p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        header p.location {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            margin-bottom: 1.75rem;
+        }
+
+        header p.location i {
+            margin-right: 0.35rem;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--card-shadow);
+        }
+
+        .btn-ghost {
+            background-color: var(--card-bg);
             color: var(--text-color);
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s 0.2s forwards;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 2px 10px var(--card-shadow);
         }
 
+        .btn-ghost:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- About ---------- */
         section.about {
-            padding: 2rem 0;
+            padding: 2rem 0 1rem;
             text-align: center;
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s 0.4s forwards;
         }
 
+        section.about p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        /* ---------- Highlights ---------- */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            padding: 2rem 0 1rem;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 1.25rem 1rem;
+        }
+
+        .highlight-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1.2;
+        }
+
+        .highlight-card .label {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-top: 0.35rem;
+        }
+
+        /* ---------- Sections ---------- */
         .section-title {
             text-align: center;
             font-size: 2rem;
             font-weight: 700;
-            margin: 2rem 0;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s 0.5s forwards;
-        }
-        
-        .experience {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            padding: 0 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s 0.6s forwards;
-        }
-        
-        .experience-item-1 {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px var(--card-shadow);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .experience-item-1:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--card-shadow);
-        }
-		
-		.experience-item-2 {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px var(--card-shadow);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .experience-item-2:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--card-shadow);
-        }
-        
-        .job-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
-        }
-        
-        .job-duration {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-        
-        .job-description {
-            font-size: 1rem;
-            line-height: 1.6;
+            margin: 3rem 0 1.5rem;
         }
 
-        .bento-grid {
+        /* ---------- Experience ---------- */
+        .experience {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+        }
+
+        .job-title {
+            font-size: 1.35rem;
+            color: var(--accent-color);
+        }
+
+        .job-company {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0.15rem;
+        }
+
+        .job-duration {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            margin-top: 0.75rem;
+            padding-left: 1.2rem;
+        }
+
+        .job-description li {
+            font-size: 0.98rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        /* ---------- Skills ---------- */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: minmax(200px, auto);
+            gap: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-card h3 i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .skill-card .tags {
+            margin-top: 0;
+        }
+
+        /* ---------- Projects ---------- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
             gap: 1.5rem;
-            padding: 2rem 0 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s 0.6s forwards;
+            padding: 0.5rem 0 2rem;
         }
 
         .project-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px var(--card-shadow);
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            grid-column: span 2;
         }
 
-        .project-card:nth-child(1) {
-            grid-column: span 1;
-            grid-row: span 1;
+        .project-card.featured {
+            grid-column: span 6;
         }
 
-        .project-card:nth-child(2) {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
-
-        .project-card:nth-child(3) {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
-
-        .project-card:nth-child(4) {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--card-shadow);
+        .project-card.wide {
+            grid-column: span 3;
         }
 
         .project-card h3 {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
+        }
+
+        .project-card h3 .badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            background-color: var(--tag-bg);
+            border-radius: 20px;
+            padding: 0.2rem 0.6rem;
+            vertical-align: middle;
+            margin-left: 0.5rem;
         }
 
         .project-card p {
@@ -206,26 +327,10 @@
         }
 
         .project-card .tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
             margin-top: auto;
         }
 
-        .project-card .tag {
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 0.25rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--accent-color);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .project-card .tag {
-                background-color: rgba(255, 255, 255, 0.1);
-            }
-        }
-
+        /* ---------- Project overlay ---------- */
         .project-overlay {
             position: fixed;
             top: 0;
@@ -259,6 +364,19 @@
             position: relative;
         }
 
+        .project-details h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-details p {
+            margin-bottom: 1rem;
+        }
+
+        .project-details a {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
         .close-btn {
             position: absolute;
             top: 1rem;
@@ -276,23 +394,38 @@
             opacity: 1;
         }
 
+        /* ---------- Footer ---------- */
         footer {
             text-align: center;
             padding: 2rem 0 4rem;
-            opacity: 0.7;
             font-size: 0.9rem;
+        }
+
+        .footer-meta {
+            opacity: 0.75;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .footer-meta p {
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-meta i {
+            color: var(--accent-color);
+            margin-right: 0.4rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
             color: var(--text-color);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.8;
             transition: var(--transition);
         }
@@ -302,68 +435,205 @@
             color: var(--accent-color);
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .highlights {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .bento-grid {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
-            .project-card:nth-child(n) {
-                grid-column: span 1;
+            .bento-grid .project-card,
+            .bento-grid .project-card.wide,
+            .bento-grid .project-card.featured {
+                grid-column: span 6;
             }
+        }
 
-            header h1 {
-                font-size: 2.5rem;
+        @media (max-width: 480px) {
+            .highlights {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Valentin Enchev</h1>
-        <p class="subtitle">Self taught dev & e-sports enthusiast</p>
+        <h1 class="reveal">Valentin Enchev</h1>
+        <p class="subtitle reveal" style="animation-delay: 0.1s">QA Engineer</p>
+        <p class="location reveal" style="animation-delay: 0.15s"><i class="fas fa-location-dot"></i>Sofia, Bulgaria &middot; Relocating to Cyprus</p>
+        <div class="contact-row reveal" style="animation-delay: 0.2s">
+            <a class="btn btn-primary" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-file-arrow-down"></i>R&eacute;sum&eacute;</a>
+            <a class="btn btn-ghost" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>Email</a>
+            <a class="btn btn-ghost" href="https://github.com/ValkaYuh"><i class="fab fa-github"></i>GitHub</a>
+            <a class="btn btn-ghost" href="https://linktr.ee/valentinenchev"><i class="fas fa-link"></i>Linktree</a>
+        </div>
     </header>
 
-    <section class="about" id="about-section">
-        <p>I'm a self-taught dev with a little over 2 years of experience in software QA, both manual and automation. I've picked up some ML skills along the way as well :D</p>
+    <section class="about reveal" style="animation-delay: 0.3s" id="about-section">
+        <p>QA Engineer with 2+ years across manual and automated testing (Java, Python, Selenium) on iOS, Android, and Web. I've built 100+ backend automation tests, led manual test suite re-writes through major redesigns, and ran load testing with Apache JMeter. Self-taught in machine learning as well, I built a Valorant match-prediction model hitting ~75% accuracy across all pro tiers.</p>
     </section>
-	
-	<h2 class="section-title">Experience</h2>
-    
-    <section class="experience">
-        <div class="experience-item-1">
-            <h3 class="job-title">Software QA Engineer Internship @ TalkRemit</h3>
-            <p class="job-duration">November 2022 - May 2023</p>
-            <p class="job-description">During my internship, I developed a strong foundation in quality assurance methodologies. I quickly adapted to using Java, a programming language new to me, and became proficient in utilizing Jira for efficient issue tracking and team collaboration. This experience not only deepened my technical skills but also enhanced my ability to contribute effectively to a dynamic development environment.</p>
-        </div>
-		<div class="experience-item-2">
-            <h3 class="job-title">Software QA Engineer @ TalkRemit</h3>
-            <p class="job-duration">June 2023 - January 2025</p>
-            <p class="job-description">After transitioning to a full-time role as a Software QA Engineer, I leveraged my internship experience to excel in both manual and automated testing. I played a key role in the expansion of the existing automation testing,  while also conducting meticulous manual tests to identify and resolve quality issues. My proactive approach allowed me to detect and swiftly address live production bugs,  ensuring the reliability and integrity of our software.</p>
-        </div>
-    </section>
-	
-	<h2 class="section-title">Projects</h2>
 
-    <div class="bento-grid">
-		<div class="project-card" 
-			onclick="showProject('project-0-detail')">
-            <h3>FlightInc</h3>
-            <p>A game about spotting and correcting errors in flight details. Made during a game jam. Rank #142 in the Inovation category and overall rank of #664. (there were 2199 entries total)</p>
+    <section class="highlights reveal" style="animation-delay: 0.4s">
+        <div class="card highlight-card">
+            <div class="number">2+ yrs</div>
+            <div class="label">of manual &amp; automation QA experience</div>
+        </div>
+        <div class="card highlight-card">
+            <div class="number">100+</div>
+            <div class="label">backend automation tests written</div>
+        </div>
+        <div class="card highlight-card">
+            <div class="number">~75%</div>
+            <div class="label">accuracy predicting pro Valorant matches</div>
+        </div>
+        <div class="card highlight-card">
+            <div class="number">#142</div>
+            <div class="label">Innovation rank at Brackeys 2025 game jam (2,199 entries)</div>
+        </div>
+    </section>
+
+    <h2 class="section-title reveal" style="animation-delay: 0.5s">Experience</h2>
+
+    <section class="experience reveal" style="animation-delay: 0.55s">
+        <div class="card experience-item">
+            <div class="job-header">
+                <h3 class="job-title">Independent ML Project: Valorant Esports Prediction Model</h3>
+                <p class="job-duration">February 2025 &ndash; July 2026</p>
+            </div>
+            <p class="job-company">Self-directed (solo)</p>
+            <ul class="job-description">
+                <li>Created a comprehensive scrape script to collect all the data needed for the model.</li>
+                <li>Built an ML model that predicts the outcome of professional Valorant matches, reaching ~75% accuracy on eval data across all tiers of pro play.</li>
+                <li>Analysed feature importance and improved the model by removing unimportant features and engineering new ones.</li>
+                <li>Validated the model's real-world edge by backtesting predictions against live betting markets, confirming consistent positive ROI.</li>
+            </ul>
             <div class="tags">
-                <span class="tag">GDscript</span>
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">CatBoost</span>
+                <span class="tag">AutoGluon</span>
+                <span class="tag">BeautifulSoup</span>
+            </div>
+        </div>
+
+        <div class="card experience-item">
+            <div class="job-header">
+                <h3 class="job-title">Software QA Engineer</h3>
+                <p class="job-duration">June 2023 &ndash; January 2025</p>
+            </div>
+            <p class="job-company">TalkRemit &middot; Sofia, Bulgaria</p>
+            <ul class="job-description">
+                <li>Contributed significantly to the automation testing project (100+ backend tests written).</li>
+                <li>Played a key role in the transition from our in-house KYC system to a third-party one, by first figuring out how it works and then writing test cases for it.</li>
+                <li>Reported and helped find the cause of multiple hard-to-troubleshoot live bugs.</li>
+                <li>Utilized Apache JMeter to create a load testing suite.</li>
+                <li>Re-worked the front-end manual test suite after a major redesign of our mobile apps.</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">Selenium</span>
+                <span class="tag">Apache JMeter</span>
+                <span class="tag">Postman</span>
+                <span class="tag">Jira</span>
+            </div>
+        </div>
+
+        <div class="card experience-item">
+            <div class="job-header">
+                <h3 class="job-title">Software QA Engineer Internship</h3>
+                <p class="job-duration">November 2022 &ndash; May 2023</p>
+            </div>
+            <p class="job-company">TalkRemit &middot; Sofia, Bulgaria</p>
+            <ul class="job-description">
+                <li>Quickly adapted to Java, a language I had never used before, and started contributing to the backend automation testing project.</li>
+                <li>Contributed to the manual testing suite, both updating old test cases and creating new ones.</li>
+                <li>Executed regression, smoke, and exploratory testing to catch defects pre-release.</li>
+                <li>Got familiar with Jira and the team's communication and work style.</li>
+            </ul>
+            <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">Manual QA</span>
+                <span class="tag">Jira</span>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title reveal" style="animation-delay: 0.6s">Skills</h2>
+
+    <section class="skills-grid reveal" style="animation-delay: 0.65s">
+        <div class="card skill-card">
+            <h3><i class="fas fa-vial-circle-check"></i>Testing</h3>
+            <div class="tags">
+                <span class="tag">Manual QA</span>
+                <span class="tag">Automation QA</span>
+                <span class="tag">Selenium</span>
+                <span class="tag">Apache JMeter</span>
+                <span class="tag">BeautifulSoup</span>
+                <span class="tag">TestCaseLab</span>
+                <span class="tag">Jira</span>
+                <span class="tag">Postman</span>
+            </div>
+        </div>
+        <div class="card skill-card">
+            <h3><i class="fas fa-code"></i>Programming</h3>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Java</span>
+                <span class="tag">C++</span>
+            </div>
+        </div>
+        <div class="card skill-card">
+            <h3><i class="fas fa-brain"></i>Machine Learning</h3>
+            <div class="tags">
+                <span class="tag">PyTorch</span>
+                <span class="tag">CatBoost</span>
+                <span class="tag">AutoGluon</span>
+            </div>
+        </div>
+        <div class="card skill-card">
+            <h3><i class="fas fa-shapes"></i>Other</h3>
+            <div class="tags">
+                <span class="tag">Godot</span>
+                <span class="tag">Hardware</span>
+                <span class="tag">Troubleshooting</span>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title reveal" style="animation-delay: 0.7s">Projects</h2>
+
+    <div class="bento-grid reveal" style="animation-delay: 0.75s">
+        <div class="card project-card featured" onclick="showProject('project-ml-detail')">
+            <h3>Valorant Esports Prediction Model<span class="badge">Featured</span></h3>
+            <p>An end-to-end ML pipeline, from a custom data scraper to a trained model, that predicts professional Valorant match outcomes with ~75% accuracy across all pro tiers (VCT, VCL, T3, GC, Collegiate). Backtested against live betting markets with consistent positive ROI.</p>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">CatBoost</span>
+                <span class="tag">AutoGluon</span>
+                <span class="tag">BeautifulSoup</span>
+            </div>
+        </div>
+
+        <div class="card project-card wide" onclick="showProject('project-0-detail')">
+            <h3>FlightInc</h3>
+            <p>A game about spotting and correcting errors in flight details, made in 7 days for the Brackeys 2025 game jam. Ranked #142 in the Innovation category and #664 overall, out of 2,199 entries.</p>
+            <div class="tags">
+                <span class="tag">GDScript</span>
                 <span class="tag">Godot</span>
             </div>
         </div>
-		
-		<div class="project-card" 
-			onclick="showProject('project-1-detail')">
+
+        <div class="card project-card wide" onclick="showProject('project-1-detail')">
             <h3>vSec</h3>
             <p>A Discord security bot that flags malicious links and kicks repeat offenders.</p>
             <div class="tags">
@@ -373,8 +643,7 @@
             </div>
         </div>
 
-		<div class="project-card"
-			onclick="showProject('project-2-detail')">
+        <div class="card project-card" onclick="showProject('project-2-detail')">
             <h3>vFOD</h3>
             <p>Tool that disables Fullscreen Optimizations for the applications that you select.</p>
             <div class="tags">
@@ -382,10 +651,9 @@
             </div>
         </div>
 
-        <div class="project-card"
-			onclick="showProject('project-3-detail')">
+        <div class="card project-card" onclick="showProject('project-3-detail')">
             <h3>vTracker</h3>
-            <p>A python script that automatically updates/imports entries in a excel sheet, mainly used for tracking certain valorant pro players' settings</p>
+            <p>A Python script that automatically updates/imports entries in an Excel sheet, mainly used for tracking pro Valorant players' settings.</p>
             <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">Selenium</span>
@@ -393,8 +661,7 @@
             </div>
         </div>
 
-        <div class="project-card"
-            onclick="showProject('project-4-detail')">
+        <div class="card project-card" onclick="showProject('project-4-detail')">
             <h3>vFinder</h3>
             <p>Script that finds the highest damage Jhin build, for the latest patch.</p>
             <div class="tags">
@@ -406,69 +673,80 @@
 
     <div class="project-overlay" id="project-overlay">
         <div class="project-details">
-            <button class="close-btn" onclick="document.getElementById('project-overlay').classList.remove('active')">
+            <button class="close-btn" onclick="hideProject()" aria-label="Close">
                 <i class="fas fa-times"></i>
             </button>
             <div id="project-detail-content"></div>
         </div>
     </div>
 
-    <div class="project-overlay" id="project-overlay">
-        <div class="project-details">
-            <button class="close-btn" onclick="document.getElementById('project-overlay').classList.remove('active')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="project-detail-content"></div>
-        </div>
-    </div>
-    
-    <script>
-        function showProject(templateId) {
-            const template = document.getElementById(templateId);
-            const content = template.innerHTML;
-            
-            document.getElementById('project-detail-content').innerHTML = content;
-            
-            document.getElementById('project-overlay').classList.add('active');
-        }
-    </script>
+    <template id="project-ml-detail">
+        <h2>Valorant Esports Prediction Model</h2>
+        <p>This is my biggest self-directed project to date, combining my two favorite things: esports and machine learning. I built the entire pipeline myself: a comprehensive scrape script that collects all the match and player data I need, feature engineering on top of that data, and a model that predicts the outcome of professional Valorant matches.</p>
+        <p>The model reaches ~75% accuracy on evaluation data across all tiers of professional play (VCT, VCL, T3, Game Changers, Collegiate). I analysed feature importance to prune unimportant features and engineer new ones, and validated the model's real-world edge by backtesting its predictions against live betting markets, confirming a consistent positive ROI.</p>
+    </template>
 
-
-	<template id="project-0-detail">
+    <template id="project-0-detail">
         <h2>FlightInc</h2>
         <p>I've always wanted to make a game, and this is exactly what I did in the Brackeys 2025 game jam. FlightInc is a game inspired by games like Overcooked, where the game is supposed to make you stress a little bit. This was the first time that I developed anything in Godot, so the 7 days weren't quite enough to iron out all the bugs and add everything that I wanted, but I like to think that it was a good first attempt. My good friend Konstantinos Kontargyris did all the art, and I did all the coding.</p>
-		<a href="https://itch.io/jam/brackeys-13/rate/3347380" aria-label="ItchIo"><i class="fa-brands fa-itch-io" style="color: #ff6b6b; font-size: 1.2rem;"></i>
+        <a href="https://itch.io/jam/brackeys-13/rate/3347380" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
     </template>
-	
+
     <template id="project-1-detail">
         <h2>vSec</h2>
         <p>I like to build stuff that I would actually use, and this is one of those super useful tools (to me at least). In my friend group's Discord server, we occasionally have people who get infected with a virus that starts spreading malicious links, spamming them in every channel. This bot saves us the hassle of deleting all those messages manually. It even kicks the user after 3 malicious links sent to prevent them from spamming further, making moderation considerably easier, and preventing further infections.</p>
-		<a href="https://github.com/ValkaYuh/vSec" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+        <a href="https://github.com/ValkaYuh/vSec" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </template>
 
     <template id="project-2-detail">
         <h2>vFOD</h2>
         <p>Disabling full-screen optimizations on Windows 10 used to be easy on older builds because you could disable it with one registry edit globally for all programs. Unfortunately, after version 1803, this option was removed, making it very annoying to disable it manually for each program/game. With this tool you can disable it just by navigating to your desired app's directory, eliminating the need to go through multiple menus for each app.</p>
-		<a href="https://github.com/ValkaYuh/vFOD" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+        <a href="https://github.com/ValkaYuh/vFOD" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </template>
 
     <template id="project-3-detail">
         <h2>vTracker</h2>
         <p>I'm a big fan of e-sports, which is why I wrote this script. It lets me keep track of what gear and settings my favorite players use without having to manually log their information. The script can generate the base template, and then you can start adding players by pasting their prosettings.net profile link. Once you're done, you can update the whole sheet with one command.</p>
-		<a href="https://github.com/ValkaYuh/vTracker" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+        <a href="https://github.com/ValkaYuh/vTracker" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </template>
 
     <template id="project-4-detail">
         <h2>vFinder</h2>
         <p>vFinder is a script that I mostly made to get myself familiar with the Riot API. It gets the latest patch information and calculates the highest damage build for Jhin (a League of Legends character). The script doesn't account for any special status effects since those are written in plain text, but I could in theory use an LLM to account for them too.</p>
-		<a href="https://github.com/ValkaYuh/vFinder" aria-label="GitHub"><i class="fab fa-github" style="color: #f5f5f7; opacity: 0.8; font-size: 1.2rem;"></i></a>
+        <a href="https://github.com/ValkaYuh/vFinder" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </template>
 
     <footer>
+        <div class="footer-meta">
+            <p><i class="fas fa-language"></i>English (Native) &middot; Greek (Proficient) &middot; Bulgarian (Proficient)</p>
+            <p><i class="fas fa-certificate"></i>IELTS Academic, CEFR Level C1, British Council (2022)</p>
+            <p><i class="fas fa-heart"></i>Esports &amp; gaming &middot; Tech &middot; Machine learning &middot; Astrophotography</p>
+        </div>
         <div class="social-links">
             <a href="https://github.com/ValkaYuh" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linktr.ee/valentinenchev" aria-label="Linktree"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:valentinenchev16@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linktr.ee/valentinenchev" aria-label="Linktree"><i class="fas fa-link"></i></a>
         </div>
     </footer>
+
+    <script>
+        function showProject(templateId) {
+            const template = document.getElementById(templateId);
+            document.getElementById('project-detail-content').innerHTML = template.innerHTML;
+            document.getElementById('project-overlay').classList.add('active');
+        }
+
+        function hideProject() {
+            document.getElementById('project-overlay').classList.remove('active');
+        }
+
+        document.getElementById('project-overlay').addEventListener('click', function (e) {
+            if (e.target === this) hideProject();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') hideProject();
+        });
+    </script>
 </body>
 </html>
