@@ -174,6 +174,7 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto auto 1fr auto;
             column-gap: 2rem;
+            overflow: hidden;
         }
 
         .hero h1 {
@@ -209,48 +210,70 @@
             min-height: 380px;
         }
 
-        .portrait {
+        /* light source at the centre of the orbits */
+        .core {
             position: relative;
-            width: clamp(230px, min(30vw, 42vh), 430px);
+            width: clamp(170px, min(24vw, 34vh), 300px);
             aspect-ratio: 1;
             z-index: 2;
+            display: grid;
+            place-items: center;
+        }
+
+        .core::before {
+            content: "";
+            position: absolute;
+            inset: -30%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(241, 238, 230, 0.34) 0%, rgba(241, 238, 230, 0.08) 32%, transparent 62%);
+        }
+
+        .core::after {
+            content: "";
+            position: absolute;
+            inset: -55%;
+            border-radius: 50%;
+            background: repeating-conic-gradient(from 0deg, rgba(241, 238, 230, 0.5) 0deg 0.35deg, transparent 0.35deg 7.5deg);
+            -webkit-mask-image: radial-gradient(circle, transparent 14%, #000 22%, transparent 64%);
+            mask-image: radial-gradient(circle, transparent 14%, #000 22%, transparent 64%);
+            opacity: 0.55;
+            animation: spin 120s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .core svg {
+            position: relative;
+            width: 46%;
+            height: 46%;
+            color: var(--paper);
+            filter: drop-shadow(0 0 14px rgba(241, 238, 230, 0.9)) drop-shadow(0 0 40px rgba(241, 238, 230, 0.45));
+            z-index: 1;
+        }
+
+        /* small portrait in the About section */
+        .portrait {
+            width: min(100%, 210px);
+            aspect-ratio: 4 / 5;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            position: relative;
         }
 
         .portrait img {
-            position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-            filter: grayscale(1) contrast(1.28) brightness(0.98);
-            -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 52%, transparent 71%);
-            mask-image: radial-gradient(circle at 50% 46%, #000 52%, transparent 71%);
-            transition: filter 1.1s var(--ease);
+            object-position: 50% 30%;
+            filter: grayscale(1) contrast(1.12) brightness(0.9);
+            transition: filter 0.8s var(--ease);
         }
 
-        /* motion-blur ghost, a nod to long exposure photos */
-        .portrait img.ghost {
-            filter: grayscale(1) blur(9px) brightness(1.5);
-            opacity: 0.33;
-            transform: translateX(-14%);
-            mix-blend-mode: screen;
-            animation: drift 7s ease-in-out infinite;
-        }
-
-        .portrait img.ghost.two {
-            opacity: 0.16;
-            transform: translateX(-28%);
-            filter: grayscale(1) blur(16px) brightness(1.6);
-            animation-delay: -2s;
-        }
-
-        @keyframes drift {
-            50% { translate: 4% 0; }
-        }
-
-        .portrait:hover img.main {
-            filter: grayscale(0) contrast(1.05) brightness(1);
+        .portrait:hover img {
+            filter: grayscale(0) contrast(1) brightness(1);
         }
 
         .orbits {
@@ -270,11 +293,6 @@
             vector-effect: non-scaling-stroke;
         }
 
-        .orbits .orbit.front {
-            stroke: var(--paper);
-            stroke-width: 1.4;
-        }
-
         .orbits circle.planet {
             fill: none;
             stroke: var(--paper);
@@ -284,10 +302,6 @@
 
         .orbits circle.moon {
             fill: var(--paper);
-        }
-
-        .hero-visual .front-orbit {
-            z-index: 3;
         }
 
         .float-star {
@@ -317,9 +331,6 @@
             display: block;
         }
 
-        .hero-stack span:nth-child(2) { opacity: 0.8; }
-        .hero-stack span:nth-child(3) { opacity: 0.6; }
-        .hero-stack span:nth-child(4) { opacity: 0.4; }
 
         .hero-note {
             position: absolute;
@@ -342,9 +353,10 @@
             flex-wrap: wrap;
         }
 
-        .hero-foot .motto {
-            font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-            text-transform: uppercase;
+        .hero-foot .intro {
+            max-width: 44ch;
+            color: var(--paper-dim);
+            font-size: clamp(0.95rem, 1.3vw, 1.08rem);
         }
 
         .actions {
@@ -855,10 +867,6 @@
             overflow: hidden;
         }
 
-        .contact .orbits {
-            opacity: 0.8;
-        }
-
         .contact h2 {
             position: relative;
             font-weight: 200;
@@ -1020,11 +1028,11 @@
                 padding: 2.5rem 0 2rem;
             }
 
-            .portrait {
+            .core {
                 grid-column: 1 / -1;
                 justify-self: center;
-                width: min(78vw, 330px);
-                margin-bottom: 2rem;
+                width: min(52vw, 220px);
+                margin: 1.5rem 0 3rem;
             }
 
             .hero-stack, .hero-note {
@@ -1056,7 +1064,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .grain, .float-star, .portrait img.ghost, .status::before { animation: none; }
+            .grain, .float-star, .core::after, .status::before { animation: none; }
             .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
@@ -1101,32 +1109,26 @@
                     <circle class="moon" cx="112" cy="455" r="3"/>
                 </svg>
 
-                <div class="portrait reveal">
-                    <img class="ghost two" src="assets/valentin.jpg" alt="" aria-hidden="true">
-                    <img class="ghost" src="assets/valentin.jpg" alt="" aria-hidden="true">
-                    <img class="main" src="assets/valentin.jpg" alt="Portrait of Valentin Enchev by the sea at sunset" width="900" height="900">
+                <div class="core reveal" aria-hidden="true">
+                    <svg><use href="#spark"/></svg>
                 </div>
-
-                <svg class="orbits front-orbit" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                    <path class="orbit front" d="M 40 390 C 300 340, 620 250, 960 150"/>
-                </svg>
 
                 <svg class="float-star" style="left: 68%; top: 12%; width: 54px; height: 54px;" aria-hidden="true"><use href="#spark"/></svg>
                 <svg class="float-star" style="left: 26%; top: 70%; width: 30px; height: 30px; animation-delay: -1.5s;" aria-hidden="true"><use href="#spark"/></svg>
                 <svg class="float-star" style="left: 76%; top: 64%; width: 18px; height: 18px; animation-delay: -3s;" aria-hidden="true"><use href="#spark"/></svg>
 
-                <p class="hero-stack reveal" aria-label="Reproduce, capture, file, verify">
-                    <span>Reproduce</span>
-                    <span>Capture</span>
-                    <span>File</span>
-                    <span>Verify</span>
+                <p class="hero-stack reveal">
+                    <span>Manual QA</span>
+                    <span>API testing</span>
+                    <span>Backend automation</span>
+                    <span>Mobile and web</span>
                 </p>
 
                 <p class="hero-note reveal">100+ backend tests in Java and TestNG</p>
             </div>
 
             <div class="hero-foot reveal">
-                <p class="motto">So that nothing breaks <br>where users can see it</p>
+                <p class="intro">Manual and backend automation QA, with 2+ years in fintech and payments.</p>
                 <div class="actions">
                     <a class="btn solid" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-arrow-down"></i>Resume PDF</a>
                     <a class="btn" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>Email</a>
@@ -1138,12 +1140,14 @@
         <!-- ================= ABOUT ================= -->
         <section class="block" id="about">
             <div class="block-head">
-                <span class="label reveal">01 / About</span>
-                <h2 class="reveal">Quality, <br>end to end</h2>
+                <span class="label reveal">01</span>
+                <h2 class="reveal">About</h2>
             </div>
 
             <div class="about-grid">
-                <span></span>
+                <div class="portrait reveal">
+                    <img src="assets/valentin.jpg" alt="Portrait of Valentin Enchev" width="900" height="900" loading="lazy">
+                </div>
                 <div>
                     <p class="statement reveal">
                         I'm a QA Engineer with <em>2+ years</em> testing a fintech remittance product across iOS, Android and web. I was one of two QAs on the backend automation project, and I owned manual QA for the Android app through a full rewrite of the front end test suite.
@@ -1169,8 +1173,8 @@
         <!-- ================= EXPERIENCE ================= -->
         <section class="block" id="experience">
             <div class="block-head">
-                <span class="label reveal">02 / Experience</span>
-                <h2 class="reveal">Where I've <br>worked</h2>
+                <span class="label reveal">02</span>
+                <h2 class="reveal">Experience</h2>
             </div>
 
             <article class="role reveal">
@@ -1185,7 +1189,7 @@
                         <li><strong>Wrote 100+ backend automation tests</strong> in Java and TestNG as one of only two QAs on the automation project.</li>
                         <li><strong>Owned manual QA for the Android app</strong> and covered web alongside it, running regression, smoke, exploratory and end to end testing for every release.</li>
                         <li><strong>Rewrote the entire front end manual test suite</strong> in TestCaseLab after a major mobile redesign, updating every existing case and adding coverage for the new flows.</li>
-                        <li><strong>Played a key role in the KYC migration</strong> from an in house system to a third party provider: I worked out how the new integration behaved, then wrote the test cases covering it.</li>
+                        <li><strong>Led testing for the KYC migration</strong> from an in house system to a third party provider: I worked out how the new integration behaved, then wrote the test cases covering it.</li>
                         <li><strong>Verified new API endpoints in Postman</strong> before automating them, and prototyped end to end flows there before writing the Java version. Ran SQL queries in DBeaver to confirm data state during testing.</li>
                         <li><strong>Filed and managed bugs in Jira</strong> with DevTools network traces and HAR captures attached, so developers could reproduce issues immediately. Helped trace hard to reproduce production bugs to their root cause, using Kibana for log analysis.</li>
                         <li><strong>Built a load testing suite</strong> with Apache JMeter, and maintained the team's QA process documentation in Confluence.</li>
@@ -1202,7 +1206,7 @@
                 </div>
                 <div class="case">
                     <span class="label"><svg class="sparkle"><use href="#spark"/></svg>&nbsp; Case file</span>
-                    <h3>The test cases nobody could run</h3>
+                    <h3>Unblocking new card authentication tests</h3>
                     <p>Adding a new card triggered an authentication step that fired off a chain of requests. That chain could not be reproduced by hand through the API, so a whole group of test cases around new card authentication was blocked. My fix was to split the job between the tools that could each handle part of it:</p>
                     <ol class="flow">
                         <li><b>Java + TestNG</b><span>Drive the flow through the API up to the authentication step.</span></li>
@@ -1232,8 +1236,8 @@
         <!-- ================= SKILLS ================= -->
         <section class="block" id="skills">
             <div class="block-head">
-                <span class="label reveal">03 / Skills</span>
-                <h2 class="reveal">Toolkit</h2>
+                <span class="label reveal">03</span>
+                <h2 class="reveal">Skills</h2>
             </div>
 
             <div class="skills reveal">
@@ -1267,8 +1271,8 @@
         <!-- ================= PROJECTS ================= -->
         <section class="block" id="projects">
             <div class="block-head">
-                <span class="label reveal">04 / Projects</span>
-                <h2 class="reveal">Things <br>I've built</h2>
+                <span class="label reveal">04</span>
+                <h2 class="reveal">Projects</h2>
             </div>
 
             <ul class="projects">
@@ -1337,16 +1341,9 @@
 
         <!-- ================= CONTACT ================= -->
         <section class="block contact" id="contact">
-            <svg class="orbits" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                <ellipse class="orbit" cx="500" cy="230" rx="520" ry="150" transform="rotate(-8 500 230)"/>
-                <ellipse class="orbit" cx="500" cy="230" rx="380" ry="90" transform="rotate(10 500 230)" stroke-dasharray="2 7"/>
-                <circle class="moon" cx="92" cy="300" r="5"/>
-                <circle class="planet" cx="905" cy="140" r="10"/>
-            </svg>
-
-            <span class="label reveal">05 / Contact</span>
-            <h2 class="reveal" style="margin-top: 1.25rem;">Looking for <br><b>a QA engineer?</b></h2>
-            <p class="lead reveal">I'm based in Nicosia and looking to get back into QA. If your team ships something people rely on, I'd like to hear about it.</p>
+            <span class="label reveal"><svg class="sparkle"><use href="#spark"/></svg>&nbsp; 05</span>
+            <h2 class="reveal" style="margin-top: 1.25rem;">Get in <b>touch</b></h2>
+            <p class="lead reveal">I'm based in Nicosia, Cyprus and open to QA roles. Email is the best way to reach me.</p>
             <div class="actions reveal">
                 <a class="btn solid" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>valentinenchev16@gmail.com</a>
                 <a class="btn" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-arrow-down"></i>Resume PDF</a>
