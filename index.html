@@ -3,750 +3,1531 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Valentin Enchev, QA Engineer with 2+ years of manual and automated testing experience, self-taught in machine learning.">
-    <title>Valentin Enchev - QA Engineer</title>
+    <meta name="description" content="Valentin Enchev, QA Engineer in Nicosia, Cyprus. 2+ years testing a fintech remittance product across iOS, Android and web, with 100+ backend automation tests in Java and TestNG.">
+    <meta name="theme-color" content="#070707">
+    <meta property="og:title" content="Valentin Enchev, QA Engineer">
+    <meta property="og:description" content="2+ years testing a fintech remittance product across iOS, Android and web. Based in Nicosia, Cyprus.">
+    <meta property="og:image" content="assets/valentin.jpg">
+    <title>Valentin Enchev | QA Engineer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23070707'/%3E%3Cpath d='M16 3 C17 13 19 15 29 16 C19 17 17 19 16 29 C15 19 13 17 3 16 C13 15 15 13 16 3Z' fill='%23f1eee6'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-color: #f5f5f7;
-            --text-color: #1d1d1f;
-            --accent-color: #0071e3;
-            --card-bg: #ffffff;
-            --card-shadow: rgba(0, 0, 0, 0.1);
-            --card-border: rgba(0, 0, 0, 0.04);
-            --tag-bg: rgba(0, 113, 227, 0.08);
-            --transition: all 0.3s ease;
+            color-scheme: dark;
+            --ink: #070707;
+            --ink-2: #0f0f0f;
+            --paper: #f1eee6;
+            --paper-dim: rgba(241, 238, 230, 0.62);
+            --paper-faint: rgba(241, 238, 230, 0.34);
+            --line: rgba(241, 238, 230, 0.2);
+            --line-strong: rgba(241, 238, 230, 0.55);
+            --display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+            --gutter: clamp(16px, 4vw, 56px);
+            --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1d1d1f;
-                --text-color: #f5f5f7;
-                --accent-color: #2997ff;
-                --card-bg: #2d2d2f;
-                --card-shadow: rgba(0, 0, 0, 0.2);
-                --card-border: rgba(255, 255, 255, 0.06);
-                --tag-bg: rgba(41, 151, 255, 0.14);
-            }
-        }
-
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0 5%;
-            max-width: 1100px;
-            margin: 0 auto;
-            transition: var(--transition);
+            background: var(--ink);
+            color: var(--paper);
+            font-family: var(--display);
+            font-stretch: 100%;
+            font-weight: 350;
+            line-height: 1.55;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px var(--card-shadow);
-            transition: var(--transition);
+        ::selection {
+            background: var(--paper);
+            color: var(--ink);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px var(--card-shadow);
+        a {
+            color: inherit;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
+        /* ---------- Atmosphere: stars + film grain ---------- */
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .grain {
+            position: fixed;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0.13;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            animation: grain 1.2s steps(6) infinite;
         }
 
-        /* ---------- Header ---------- */
-        header {
-            padding: 4rem 0 1rem;
-            text-align: center;
+        @keyframes grain {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-4%, 3%); }
+            40% { transform: translate(3%, -5%); }
+            60% { transform: translate(-6%, -2%); }
+            80% { transform: translate(5%, 4%); }
+            100% { transform: translate(0, 0); }
         }
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
+        main, footer, .topbar {
+            position: relative;
+            z-index: 1;
         }
 
-        header p.subtitle {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+        /* ---------- Shared type ---------- */
+        .label {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--paper-dim);
         }
 
-        header p.location {
-            font-size: 0.95rem;
-            opacity: 0.7;
-            margin-bottom: 1.75rem;
+        .caps {
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
-        header p.location i {
-            margin-right: 0.35rem;
+        .sparkle {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.1em;
         }
 
-        .contact-row {
+        svg use {
+            fill: currentColor;
+        }
+
+        /* ---------- Top bar ---------- */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem var(--gutter);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: clamp(0.9rem, 2.5vw, 2rem);
+        }
+
+        .topbar a {
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .topbar a:hover {
+            color: var(--paper);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .status::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--paper);
+            box-shadow: 0 0 10px 2px rgba(241, 238, 230, 0.7);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            50% { opacity: 0.35; }
+        }
+
+        /* ---------- Hero poster ---------- */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            padding: clamp(1.5rem, 4vw, 2.75rem) var(--gutter) 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            column-gap: 2rem;
+        }
+
+        .hero h1 {
+            grid-column: 1 / -1;
+            font-weight: 200;
+            font-stretch: 112%;
+            font-size: min(8.9vw, 9.6rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .hero-sub {
+            margin-top: 1rem;
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+            line-height: 1.35;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .hero-sub.right {
+            text-align: right;
+        }
+
+        .hero-visual {
+            grid-column: 1 / -1;
+            position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0;
+            min-height: 380px;
+        }
+
+        .portrait {
+            position: relative;
+            width: clamp(230px, min(30vw, 42vh), 430px);
+            aspect-ratio: 1;
+            z-index: 2;
+        }
+
+        .portrait img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: grayscale(1) contrast(1.28) brightness(0.98);
+            -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 52%, transparent 71%);
+            mask-image: radial-gradient(circle at 50% 46%, #000 52%, transparent 71%);
+            transition: filter 1.1s var(--ease);
+        }
+
+        /* motion-blur ghost, a nod to long exposure photos */
+        .portrait img.ghost {
+            filter: grayscale(1) blur(9px) brightness(1.5);
+            opacity: 0.33;
+            transform: translateX(-14%);
+            mix-blend-mode: screen;
+            animation: drift 7s ease-in-out infinite;
+        }
+
+        .portrait img.ghost.two {
+            opacity: 0.16;
+            transform: translateX(-28%);
+            filter: grayscale(1) blur(16px) brightness(1.6);
+            animation-delay: -2s;
+        }
+
+        @keyframes drift {
+            50% { translate: 4% 0; }
+        }
+
+        .portrait:hover img.main {
+            filter: grayscale(0) contrast(1.05) brightness(1);
+        }
+
+        .orbits {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orbits .orbit {
+            fill: none;
+            stroke: var(--line-strong);
+            stroke-width: 1;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .orbits .orbit.front {
+            stroke: var(--paper);
+            stroke-width: 1.4;
+        }
+
+        .orbits circle.planet {
+            fill: none;
+            stroke: var(--paper);
+            stroke-width: 1.6;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .orbits circle.moon {
+            fill: var(--paper);
+        }
+
+        .hero-visual .front-orbit {
+            z-index: 3;
+        }
+
+        .float-star {
+            position: absolute;
+            color: var(--paper);
+            z-index: 3;
+            filter: drop-shadow(0 0 6px rgba(241, 238, 230, 0.8));
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            50% { opacity: 0.45; transform: scale(0.82) rotate(12deg); }
+        }
+
+        .hero-stack {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+            line-height: 1.3;
+            text-transform: uppercase;
+            z-index: 4;
+        }
+
+        .hero-stack span {
+            display: block;
+        }
+
+        .hero-stack span:nth-child(2) { opacity: 0.8; }
+        .hero-stack span:nth-child(3) { opacity: 0.6; }
+        .hero-stack span:nth-child(4) { opacity: 0.4; }
+
+        .hero-note {
+            position: absolute;
+            right: 0;
+            bottom: 12%;
+            max-width: 15rem;
+            text-align: right;
+            font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+            line-height: 1.3;
+            text-transform: uppercase;
+            z-index: 4;
+        }
+
+        .hero-foot {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            gap: 0.75rem;
+        }
+
+        .hero-foot .motto {
+            font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+            text-transform: uppercase;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.55rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 500;
+            gap: 0.55rem;
+            padding: 0.7rem 1.15rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             text-decoration: none;
-            transition: var(--transition);
+            background: rgba(7, 7, 7, 0.55);
+            backdrop-filter: blur(4px);
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
         }
 
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: #ffffff;
+        .btn:hover, .btn:focus-visible {
+            background: var(--paper);
+            color: var(--ink);
+            border-color: var(--paper);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--card-shadow);
+        .btn.solid {
+            background: var(--paper);
+            color: var(--ink);
+            border-color: var(--paper);
         }
 
-        .btn-ghost {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 2px 10px var(--card-shadow);
-        }
-
-        .btn-ghost:hover {
-            color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        /* ---------- About ---------- */
-        section.about {
-            padding: 2rem 0 1rem;
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        section.about p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-        }
-
-        /* ---------- Highlights ---------- */
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            padding: 2rem 0 1rem;
-        }
-
-        .highlight-card {
-            text-align: center;
-            padding: 1.25rem 1rem;
-        }
-
-        .highlight-card .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            line-height: 1.2;
-        }
-
-        .highlight-card .label {
-            font-size: 0.85rem;
-            opacity: 0.75;
-            margin-top: 0.35rem;
+        .btn.solid:hover {
+            background: transparent;
+            color: var(--paper);
         }
 
         /* ---------- Sections ---------- */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
+        section.block {
+            padding: clamp(4.5rem, 10vw, 8rem) var(--gutter);
+            border-top: 1px solid var(--line);
+            position: relative;
+        }
+
+        .block-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+            gap: 2rem;
+            align-items: end;
+            margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+        }
+
+        .block-head h2 {
+            font-weight: 200;
+            font-stretch: 112%;
+            font-size: clamp(2.2rem, 6.4vw, 5.6rem);
+            line-height: 0.92;
+            letter-spacing: -0.025em;
+            text-transform: uppercase;
+        }
+
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+            gap: 2rem;
+        }
+
+        .statement {
+            font-size: clamp(1.35rem, 2.7vw, 2.35rem);
+            font-weight: 300;
+            line-height: 1.22;
+            letter-spacing: -0.01em;
+            max-width: 30ch;
+        }
+
+        .statement em {
+            font-style: normal;
             font-weight: 700;
-            margin: 3rem 0 1.5rem;
+            font-stretch: 118%;
+        }
+
+        .lifecycle {
+            margin-top: clamp(2.5rem, 5vw, 4rem);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--line);
+        }
+
+        .lifecycle li {
+            list-style: none;
+            padding: 1.1rem 1.25rem 0 0;
+            position: relative;
+        }
+
+        .lifecycle li::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 0;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--paper);
+        }
+
+        .lifecycle b {
+            display: block;
+            font-weight: 700;
+            font-stretch: 118%;
+            text-transform: uppercase;
+            font-size: 1.05rem;
+            margin: 0.35rem 0 0.3rem;
+        }
+
+        .lifecycle p {
+            color: var(--paper-dim);
+            font-size: 0.93rem;
+            max-width: 26ch;
+        }
+
+        /* ---------- Numbers ---------- */
+        .numbers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: clamp(3.5rem, 7vw, 5.5rem);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .numbers div {
+            padding: 1.75rem 1.25rem 1.75rem 0;
+        }
+
+        .numbers div + div {
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--line);
+        }
+
+        .numbers strong {
+            display: block;
+            font-weight: 200;
+            font-stretch: 112%;
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .numbers span {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--paper-dim);
+            max-width: 22ch;
         }
 
         /* ---------- Experience ---------- */
-        .experience {
-            max-width: 800px;
-            margin: 0 auto;
+        .role {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+            gap: 2rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--line);
         }
 
-        .experience-item {
-            margin-bottom: 1.5rem;
+        .role:first-of-type {
+            border-top: none;
+            padding-top: 0;
         }
 
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 0.25rem 1rem;
-        }
-
-        .job-title {
-            font-size: 1.35rem;
-            color: var(--accent-color);
-        }
-
-        .job-company {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 0.15rem;
-        }
-
-        .job-duration {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .job-description {
-            margin-top: 0.75rem;
-            padding-left: 1.2rem;
-        }
-
-        .job-description li {
-            font-size: 0.98rem;
+        .role-meta .label {
+            display: block;
             margin-bottom: 0.4rem;
+        }
+
+        .role-meta .where {
+            color: var(--paper-dim);
+            font-size: 0.93rem;
+        }
+
+        .role h3 {
+            font-weight: 700;
+            font-stretch: 118%;
+            font-size: clamp(1.35rem, 2.6vw, 2rem);
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .role .context {
+            margin: 0.9rem 0 1.5rem;
+            color: var(--paper-dim);
+            max-width: 62ch;
+        }
+
+        .points {
+            list-style: none;
+            display: grid;
+            gap: 0.95rem;
+            max-width: 70ch;
+        }
+
+        .points li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72em;
+            width: 0.9rem;
+            height: 1px;
+            background: var(--line-strong);
+        }
+
+        .points strong {
+            font-weight: 600;
         }
 
         .tags {
             display: flex;
-            gap: 0.5rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
+            gap: 0.45rem;
+            margin-top: 1.5rem;
         }
 
         .tag {
-            background-color: var(--tag-bg);
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-color);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.65rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--paper-dim);
+            white-space: nowrap;
+        }
+
+        /* ---------- Case file ---------- */
+        .case {
+            margin-top: 1rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 18px;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            background: radial-gradient(120% 90% at 85% 0%, rgba(241, 238, 230, 0.08), transparent 60%), var(--ink-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case h3 {
+            font-weight: 700;
+            font-stretch: 118%;
+            font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+            line-height: 1;
+            text-transform: uppercase;
+            margin: 0.6rem 0 1.25rem;
+            max-width: 20ch;
+        }
+
+        .case > p {
+            color: var(--paper-dim);
+            max-width: 68ch;
+        }
+
+        .flow {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 2.25rem;
+            counter-reset: step;
+        }
+
+        .flow li {
+            counter-increment: step;
+            position: relative;
+            padding: 1.75rem 1.25rem 0 0;
+            border-top: 1px dashed var(--line-strong);
+            font-size: 0.95rem;
+        }
+
+        .flow li::before {
+            content: "0" counter(step);
+            position: absolute;
+            top: -0.75rem;
+            left: 0;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            background: var(--paper);
+            color: var(--ink);
+            border-radius: 999px;
+        }
+
+        .flow li:last-child {
+            border-top-style: solid;
+            border-top-color: var(--paper);
+        }
+
+        .flow b {
+            display: block;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .flow span {
+            color: var(--paper-dim);
         }
 
         /* ---------- Skills ---------- */
-        .skills-grid {
+        .skills {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            border-top: 1px solid var(--line);
         }
 
-        .skill-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+        .skill-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+            gap: 1rem;
+            padding: 1.5rem 1.5rem 1.5rem 0;
+            border-bottom: 1px solid var(--line);
         }
 
-        .skill-card h3 i {
-            color: var(--accent-color);
-            margin-right: 0.5rem;
+        .skill-row:nth-child(even) {
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--line);
         }
 
-        .skill-card .tags {
-            margin-top: 0;
+        .skill-row h3 {
+            font-weight: 700;
+            font-stretch: 118%;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .skill-row p {
+            color: var(--paper-dim);
+            font-size: 0.97rem;
+        }
+
+        .skill-row p b {
+            color: var(--paper);
+            font-weight: 500;
         }
 
         /* ---------- Projects ---------- */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-            padding: 0.5rem 0 2rem;
+        .projects {
+            list-style: none;
+            border-top: 1px solid var(--line);
         }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
+        .project {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project button {
+            all: unset;
+            box-sizing: border-box;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            grid-column: span 2;
-        }
-
-        .project-card.featured {
-            grid-column: span 6;
-        }
-
-        .project-card.wide {
-            grid-column: span 3;
-        }
-
-        .project-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card h3 .badge {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-color);
-            background-color: var(--tag-bg);
-            border-radius: 20px;
-            padding: 0.2rem 0.6rem;
-            vertical-align: middle;
-            margin-left: 0.5rem;
-        }
-
-        .project-card p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-
-        .project-card .tags {
-            margin-top: auto;
-        }
-
-        /* ---------- Project overlay ---------- */
-        .project-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: flex;
+            display: grid;
+            grid-template-columns: 3.5rem minmax(0, 1.5fr) minmax(0, 2fr) auto;
+            gap: 1.5rem;
             align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-            padding: 2rem;
+            padding: clamp(1.4rem, 3vw, 2.2rem) 0;
+            transition: padding 0.4s var(--ease), background 0.4s;
         }
 
-        .project-overlay.active {
-            opacity: 1;
-            pointer-events: all;
+        .project button:hover, .project button:focus-visible {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            background: rgba(241, 238, 230, 0.04);
         }
 
-        .project-details {
-            background-color: var(--card-bg);
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
+        .project button:focus-visible {
+            outline: 1px solid var(--paper);
+            outline-offset: -1px;
         }
 
-        .project-details h2 {
-            margin-bottom: 0.75rem;
+        .project .num {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--paper-faint);
         }
 
-        .project-details p {
+        .project h3 {
+            font-weight: 250;
+            font-stretch: 112%;
+            text-transform: uppercase;
+            font-size: clamp(1.5rem, 3.6vw, 3rem);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .project.featured h3 {
+            font-weight: 700;
+            font-stretch: 118%;
+        }
+
+        .project .desc {
+            color: var(--paper-dim);
+            font-size: 0.95rem;
+        }
+
+        .project .desc .tags {
+            margin-top: 0.8rem;
+        }
+
+        .project .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.4s var(--ease);
+        }
+
+        .project button:hover .arrow {
+            transform: rotate(-45deg);
+        }
+
+        /* ---------- Project dialog ---------- */
+        dialog {
+            margin: auto;
+            width: min(760px, calc(100% - 32px));
+            max-height: 88vh;
+            background: var(--ink-2);
+            color: var(--paper);
+            border: 1px solid var(--line-strong);
+            border-radius: 18px;
+            padding: clamp(1.5rem, 4vw, 2.75rem);
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(6px);
+        }
+
+        dialog[open] {
+            animation: rise 0.45s var(--ease);
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+        }
+
+        dialog h2 {
+            font-weight: 700;
+            font-stretch: 118%;
+            text-transform: uppercase;
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
+            line-height: 1;
+            margin: 0.5rem 2.5rem 1.25rem 0;
+        }
+
+        dialog p {
+            color: var(--paper-dim);
             margin-bottom: 1rem;
         }
 
-        .project-details a {
-            color: var(--accent-color);
-            font-size: 1.4rem;
+        dialog p b {
+            color: var(--paper);
+            font-weight: 500;
+        }
+
+        dialog .actions {
+            margin-top: 1.5rem;
         }
 
         .close-btn {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
+            top: 1.1rem;
+            right: 1.1rem;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            border: 1px solid var(--line-strong);
+            background: transparent;
+            color: var(--paper);
+            font-size: 1rem;
             cursor: pointer;
-            opacity: 0.7;
-            transition: var(--transition);
+            transition: background 0.3s, color 0.3s;
         }
 
         .close-btn:hover {
-            opacity: 1;
+            background: var(--paper);
+            color: var(--ink);
         }
 
-        /* ---------- Footer ---------- */
-        footer {
+        /* ---------- Contact / footer ---------- */
+        .contact {
             text-align: center;
-            padding: 2rem 0 4rem;
-            font-size: 0.9rem;
+            overflow: hidden;
         }
 
-        .footer-meta {
-            opacity: 0.75;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .footer-meta p {
-            margin-bottom: 0.4rem;
-        }
-
-        .footer-meta i {
-            color: var(--accent-color);
-            margin-right: 0.4rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.3rem;
+        .contact .orbits {
             opacity: 0.8;
-            transition: var(--transition);
         }
 
-        .social-links a:hover {
+        .contact h2 {
+            position: relative;
+            font-weight: 200;
+            font-stretch: 112%;
+            text-transform: uppercase;
+            font-size: clamp(2.4rem, 8.5vw, 7.5rem);
+            line-height: 0.92;
+            letter-spacing: -0.03em;
+        }
+
+        .contact h2 b {
+            font-weight: 800;
+            font-stretch: 118%;
+        }
+
+        .contact .lead {
+            position: relative;
+            margin: 1.5rem auto 2.25rem;
+            max-width: 46ch;
+            color: var(--paper-dim);
+        }
+
+        .contact .actions {
+            position: relative;
+            justify-content: center;
+        }
+
+        .facts {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: clamp(3.5rem, 8vw, 6rem);
+            text-align: left;
+            border-top: 1px solid var(--line);
+            padding-top: 1.75rem;
+        }
+
+        .facts p {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .facts p span {
+            color: var(--paper-dim);
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1.5rem var(--gutter) 2rem;
+            border-top: 1px solid var(--line);
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--paper);
+        }
+
+        /* ---------- Reveal ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 1s var(--ease), transform 1s var(--ease);
+        }
+
+        .reveal.in {
             opacity: 1;
-            color: var(--accent-color);
+            transform: none;
+        }
+
+        .no-js .reveal {
+            opacity: 1;
+            transform: none;
         }
 
         /* ---------- Responsive ---------- */
         @media (max-width: 900px) {
-            .highlights {
+            .block-head, .about-grid, .role {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .numbers {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
+            .numbers div:nth-child(3) {
+                border-left: none;
+                padding-left: 0;
             }
 
-            .skills-grid {
+            .numbers div:nth-child(n+3) {
+                border-top: 1px solid var(--line);
+            }
+
+            .lifecycle, .flow {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 2rem;
+            }
+
+            .skills {
                 grid-template-columns: 1fr;
             }
 
-            .bento-grid .project-card,
-            .bento-grid .project-card.wide,
-            .bento-grid .project-card.featured {
-                grid-column: span 6;
+            .skill-row:nth-child(even) {
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .project button {
+                grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+            }
+
+            .project .desc {
+                grid-column: 2 / -1;
+                grid-row: 2;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .highlights {
+        @media (max-width: 640px) {
+            .topbar nav {
+                display: none;
+            }
+
+            .hero {
                 grid-template-columns: 1fr;
             }
+
+            .hero-sub.right {
+                text-align: left;
+                margin-top: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 16.5vw;
+                white-space: normal;
+            }
+
+            .hero h1 span {
+                display: block;
+            }
+
+            .hero-visual {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: end;
+                min-height: 0;
+                padding: 2.5rem 0 2rem;
+            }
+
+            .portrait {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: min(78vw, 330px);
+                margin-bottom: 2rem;
+            }
+
+            .hero-stack, .hero-note {
+                position: static;
+                transform: none;
+            }
+
+            .hero-note {
+                justify-self: end;
+                max-width: 10rem;
+            }
+
+            .lifecycle, .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .project button {
+                grid-template-columns: minmax(0, 1fr) auto;
+            }
+
+            .project .num {
+                display: none;
+            }
+
+            .project .desc {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .grain, .float-star, .portrait img.ghost, .status::before { animation: none; }
+            .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1 class="reveal">Valentin Enchev</h1>
-        <p class="subtitle reveal" style="animation-delay: 0.1s">QA Engineer</p>
-        <p class="location reveal" style="animation-delay: 0.15s"><i class="fas fa-location-dot"></i>Sofia, Bulgaria &middot; Relocating to Cyprus</p>
-        <div class="contact-row reveal" style="animation-delay: 0.2s">
-            <a class="btn btn-primary" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-file-arrow-down"></i>R&eacute;sum&eacute;</a>
-            <a class="btn btn-ghost" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>Email</a>
-            <a class="btn btn-ghost" href="https://github.com/ValkaYuh"><i class="fab fa-github"></i>GitHub</a>
-            <a class="btn btn-ghost" href="https://linktr.ee/valentinenchev"><i class="fas fa-link"></i>Linktree</a>
-        </div>
+<body class="no-js">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="spark" viewBox="0 0 100 100">
+                <path d="M50 0 C52 38 62 48 100 50 C62 52 52 62 50 100 C48 62 38 52 0 50 C38 48 48 38 50 0Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+        <span class="label status">Open to QA roles in Cyprus</span>
+        <nav class="label" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <section class="about reveal" style="animation-delay: 0.3s" id="about-section">
-        <p>QA Engineer with 2+ years across manual and automated testing (Java, Python, Selenium) on iOS, Android, and Web. I've built 100+ backend automation tests, led manual test suite re-writes through major redesigns, and ran load testing with Apache JMeter. Self-taught in machine learning as well, I built a Valorant match-prediction model hitting ~75% accuracy across all pro tiers.</p>
-    </section>
+    <main>
+        <!-- ================= HERO ================= -->
+        <section class="hero" aria-label="Introduction">
+            <h1 class="reveal"><span>Valentin</span> <span>Enchev</span></h1>
 
-    <section class="highlights reveal" style="animation-delay: 0.4s">
-        <div class="card highlight-card">
-            <div class="number">2+ yrs</div>
-            <div class="label">of manual &amp; automation QA experience</div>
-        </div>
-        <div class="card highlight-card">
-            <div class="number">100+</div>
-            <div class="label">backend automation tests written</div>
-        </div>
-        <div class="card highlight-card">
-            <div class="number">~75%</div>
-            <div class="label">accuracy predicting pro Valorant matches</div>
-        </div>
-        <div class="card highlight-card">
-            <div class="number">#142</div>
-            <div class="label">Innovation rank at Brackeys 2025 game jam (2,199 entries)</div>
-        </div>
-    </section>
+            <p class="hero-sub reveal">QA Engineer<br>based in Nicosia, Cyprus</p>
+            <p class="hero-sub right reveal">Fintech<br>iOS, Android<br>and web</p>
 
-    <h2 class="section-title reveal" style="animation-delay: 0.5s">Experience</h2>
+            <div class="hero-visual">
+                <svg class="orbits" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <ellipse class="orbit" cx="500" cy="280" rx="470" ry="120" transform="rotate(-14 500 280)"/>
+                    <ellipse class="orbit" cx="500" cy="280" rx="300" ry="250" transform="rotate(24 500 280)" stroke-dasharray="2 7"/>
+                    <circle class="planet" cx="178" cy="178" r="13"/>
+                    <circle class="moon" cx="845" cy="112" r="6"/>
+                    <circle class="moon" cx="112" cy="455" r="3"/>
+                </svg>
 
-    <section class="experience reveal" style="animation-delay: 0.55s">
-        <div class="card experience-item">
-            <div class="job-header">
-                <h3 class="job-title">Independent ML Project: Valorant Esports Prediction Model</h3>
-                <p class="job-duration">February 2025 &ndash; July 2026</p>
+                <div class="portrait reveal">
+                    <img class="ghost two" src="assets/valentin.jpg" alt="" aria-hidden="true">
+                    <img class="ghost" src="assets/valentin.jpg" alt="" aria-hidden="true">
+                    <img class="main" src="assets/valentin.jpg" alt="Portrait of Valentin Enchev by the sea at sunset" width="900" height="900">
+                </div>
+
+                <svg class="orbits front-orbit" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <path class="orbit front" d="M 40 390 C 300 340, 620 250, 960 150"/>
+                </svg>
+
+                <svg class="float-star" style="left: 68%; top: 12%; width: 54px; height: 54px;" aria-hidden="true"><use href="#spark"/></svg>
+                <svg class="float-star" style="left: 26%; top: 70%; width: 30px; height: 30px; animation-delay: -1.5s;" aria-hidden="true"><use href="#spark"/></svg>
+                <svg class="float-star" style="left: 76%; top: 64%; width: 18px; height: 18px; animation-delay: -3s;" aria-hidden="true"><use href="#spark"/></svg>
+
+                <p class="hero-stack reveal" aria-label="Reproduce, capture, file, verify">
+                    <span>Reproduce</span>
+                    <span>Capture</span>
+                    <span>File</span>
+                    <span>Verify</span>
+                </p>
+
+                <p class="hero-note reveal">100+ backend tests in Java and TestNG</p>
             </div>
-            <p class="job-company">Self-directed (solo)</p>
-            <ul class="job-description">
-                <li>Created a comprehensive scrape script to collect all the data needed for the model.</li>
-                <li>Built an ML model that predicts the outcome of professional Valorant matches, reaching ~75% accuracy on eval data across all tiers of pro play.</li>
-                <li>Analysed feature importance and improved the model by removing unimportant features and engineering new ones.</li>
-                <li>Validated the model's real-world edge by backtesting predictions against live betting markets, confirming consistent positive ROI.</li>
+
+            <div class="hero-foot reveal">
+                <p class="motto">So that nothing breaks <br>where users can see it</p>
+                <div class="actions">
+                    <a class="btn solid" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-arrow-down"></i>Resume PDF</a>
+                    <a class="btn" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>Email</a>
+                    <a class="btn" href="https://github.com/ValkaYuh"><i class="fab fa-github"></i>GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+        <section class="block" id="about">
+            <div class="block-head">
+                <span class="label reveal">01 / About</span>
+                <h2 class="reveal">Quality, <br>end to end</h2>
+            </div>
+
+            <div class="about-grid">
+                <span></span>
+                <div>
+                    <p class="statement reveal">
+                        I'm a QA Engineer with <em>2+ years</em> testing a fintech remittance product across iOS, Android and web. I was one of two QAs on the backend automation project, and I owned manual QA for the Android app through a full rewrite of the front end test suite.
+                    </p>
+
+                    <ol class="lifecycle reveal" aria-label="How I handle a defect">
+                        <li><span class="label">Step 01</span><b>Reproduce</b><p>Pin the issue down until it happens every time, across devices and browsers when it has to.</p></li>
+                        <li><span class="label">Step 02</span><b>Capture</b><p>Collect the evidence: DevTools network traces, HAR files, logs and the data state behind it.</p></li>
+                        <li><span class="label">Step 03</span><b>File</b><p>Write a Jira ticket that a developer can act on straight away, without a follow up question.</p></li>
+                        <li><span class="label">Step 04</span><b>Verify</b><p>Retest the fix and confirm it is actually resolved before it goes out.</p></li>
+                    </ol>
+
+                    <div class="numbers reveal">
+                        <div><strong>2+</strong><span>years of QA in fintech and payments</span></div>
+                        <div><strong>100+</strong><span>backend automation tests in Java and TestNG</span></div>
+                        <div><strong>2 of 5</strong><span>QAs on the team working on automation</span></div>
+                        <div><strong>3</strong><span>languages: English, Greek and Bulgarian</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= EXPERIENCE ================= -->
+        <section class="block" id="experience">
+            <div class="block-head">
+                <span class="label reveal">02 / Experience</span>
+                <h2 class="reveal">Where I've <br>worked</h2>
+            </div>
+
+            <article class="role reveal">
+                <div class="role-meta">
+                    <span class="label">Feb 2025 to Jul 2026</span>
+                    <p class="where">Self directed</p>
+                </div>
+                <div>
+                    <h3>Independent projects</h3>
+                    <p class="context">Time spent building things end to end: collecting and validating data, training and evaluating a model, checking it against real world outcomes, and shipping a game in a week. Both are in <a href="#projects">Projects</a> below.</p>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="role-meta">
+                    <span class="label">Jun 2023 to Jan 2025</span>
+                    <p class="where">TalkRemit<br>Sofia, Bulgaria</p>
+                </div>
+                <div>
+                    <h3>Software QA Engineer</h3>
+                    <p class="context">International money transfers. A QA team of 5 working alongside a 16 person engineering team on a two week release cycle, with daily standups and a standing QA, product and engineering sync for open issues and urgent work.</p>
+                    <ul class="points">
+                        <li><strong>Wrote 100+ backend automation tests</strong> in Java and TestNG as one of only two QAs on the automation project.</li>
+                        <li><strong>Owned manual QA for the Android app</strong> and covered web alongside it, running regression, smoke, exploratory and end to end testing for every release.</li>
+                        <li><strong>Rewrote the entire front end manual test suite</strong> in TestCaseLab after a major mobile redesign, updating every existing case and adding coverage for the new flows.</li>
+                        <li><strong>Played a key role in the KYC migration</strong> from an in house system to a third party provider: I worked out how the new integration behaved, then wrote the test cases covering it.</li>
+                        <li><strong>Verified new API endpoints in Postman</strong> before automating them, and prototyped end to end flows there before writing the Java version. Ran SQL queries in DBeaver to confirm data state during testing.</li>
+                        <li><strong>Filed and managed bugs in Jira</strong> with DevTools network traces and HAR captures attached, so developers could reproduce issues immediately. Helped trace hard to reproduce production bugs to their root cause, using Kibana for log analysis.</li>
+                        <li><strong>Built a load testing suite</strong> with Apache JMeter, and maintained the team's QA process documentation in Confluence.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Java</span><span class="tag">TestNG</span><span class="tag">Postman</span><span class="tag">SQL</span><span class="tag">TestCaseLab</span><span class="tag">Jira</span><span class="tag">Kibana</span><span class="tag">JMeter</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="role-meta">
+                    <span class="label">&nbsp;</span>
+                </div>
+                <div class="case">
+                    <span class="label"><svg class="sparkle"><use href="#spark"/></svg>&nbsp; Case file</span>
+                    <h3>The test cases nobody could run</h3>
+                    <p>Adding a new card triggered an authentication step that fired off a chain of requests. That chain could not be reproduced by hand through the API, so a whole group of test cases around new card authentication was blocked. My fix was to split the job between the tools that could each handle part of it:</p>
+                    <ol class="flow">
+                        <li><b>Java + TestNG</b><span>Drive the flow through the API up to the authentication step.</span></li>
+                        <li><b>Hand off</b><span>Take the request that triggers the chain.</span></li>
+                        <li><b>Headless browser</b><span>Open it with Selenium and let the chain complete on its own.</span></li>
+                        <li><b>Unblocked</b><span>New card authentication works in tests, and the blocked cases run.</span></li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="role reveal">
+                <div class="role-meta">
+                    <span class="label">Nov 2022 to May 2023</span>
+                    <p class="where">TalkRemit<br>Sofia, Bulgaria</p>
+                </div>
+                <div>
+                    <h3>Software QA Engineer, Intern</h3>
+                    <ul class="points" style="margin-top: 1.25rem;">
+                        <li><strong>Picked up Java from scratch</strong> and was contributing to the backend automation project before the internship ended.</li>
+                        <li>Ran regression, smoke and exploratory testing on release candidates, wrote and updated manual test cases, and learned the team's Jira workflow and release process.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ================= SKILLS ================= -->
+        <section class="block" id="skills">
+            <div class="block-head">
+                <span class="label reveal">03 / Skills</span>
+                <h2 class="reveal">Toolkit</h2>
+            </div>
+
+            <div class="skills reveal">
+                <div class="skill-row">
+                    <h3>QA</h3>
+                    <p><b>Manual QA</b>, test case design and maintenance, <b>regression</b>, smoke, <b>exploratory</b> and <b>end to end</b> testing, API testing, load testing, cross-browser checks where behaviour is browser specific (Chrome, Edge, Vivaldi)</p>
+                </div>
+                <div class="skill-row">
+                    <h3>Platforms</h3>
+                    <p><b>Android</b> (owned) and <b>web</b>, plus iOS. All mobile testing was manual.</p>
+                </div>
+                <div class="skill-row">
+                    <h3>Automation</h3>
+                    <p><b>Java</b>, <b>TestNG</b>, <b>Postman</b>, Selenium, Apache JMeter, Git</p>
+                </div>
+                <div class="skill-row">
+                    <h3>Tools</h3>
+                    <p><b>Jira</b>, <b>TestCaseLab</b>, Confluence, DBeaver, SQL, Kibana, <b>Chrome DevTools and HAR analysis</b></p>
+                </div>
+                <div class="skill-row">
+                    <h3>Domain</h3>
+                    <p><b>Fintech</b>, cross border payments, remittance flows, <b>card authentication</b>, <b>KYC</b> and identity verification, third party integrations</p>
+                </div>
+                <div class="skill-row">
+                    <h3>Programming</h3>
+                    <p><b>Java</b>, <b>Python</b>, C++. Also familiar with PyTorch, CatBoost, AutoGluon, BeautifulSoup and Godot.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section class="block" id="projects">
+            <div class="block-head">
+                <span class="label reveal">04 / Projects</span>
+                <h2 class="reveal">Things <br>I've built</h2>
+            </div>
+
+            <ul class="projects">
+                <li class="project featured reveal">
+                    <button type="button" data-project="project-ml">
+                        <span class="num">01</span>
+                        <h3>Valorant Prediction Model</h3>
+                        <span class="desc">A scraper, a cleaned dataset and a trained model that predicts professional Valorant matches with ~75% accuracy on held out data, across five tiers of pro play.
+                            <span class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">CatBoost</span><span class="tag">AutoGluon</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li class="project featured reveal">
+                    <button type="button" data-project="project-flightinc">
+                        <span class="num">02</span>
+                        <h3>FlightInc</h3>
+                        <span class="desc">A game about spotting and fixing errors in flight details, built and shipped in one week for the Brackeys 2025 game jam. Ranked #142 in Innovation out of 2,199 entries.
+                            <span class="tags"><span class="tag">Godot</span><span class="tag">GDScript</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li class="project reveal">
+                    <button type="button" data-project="project-vsec">
+                        <span class="num">03</span>
+                        <h3>vSec</h3>
+                        <span class="desc">A Discord bot that deletes malicious links and kicks repeat offenders.
+                            <span class="tags"><span class="tag">Python</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li class="project reveal">
+                    <button type="button" data-project="project-vtracker">
+                        <span class="num">04</span>
+                        <h3>vTracker</h3>
+                        <span class="desc">A script that builds and updates a spreadsheet of pro Valorant players' gear and settings.
+                            <span class="tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Excel</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li class="project reveal">
+                    <button type="button" data-project="project-vfod">
+                        <span class="num">05</span>
+                        <h3>vFOD</h3>
+                        <span class="desc">A small Windows tool that turns off Fullscreen Optimizations for the apps you pick.
+                            <span class="tags"><span class="tag">C++</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
+                <li class="project reveal">
+                    <button type="button" data-project="project-vfinder">
+                        <span class="num">06</span>
+                        <h3>vFinder</h3>
+                        <span class="desc">A script that finds the highest damage Jhin build for the latest League of Legends patch.
+                            <span class="tags"><span class="tag">Python</span><span class="tag">Riot API</span></span>
+                        </span>
+                        <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                    </button>
+                </li>
             </ul>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">PyTorch</span>
-                <span class="tag">CatBoost</span>
-                <span class="tag">AutoGluon</span>
-                <span class="tag">BeautifulSoup</span>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section class="block contact" id="contact">
+            <svg class="orbits" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <ellipse class="orbit" cx="500" cy="230" rx="520" ry="150" transform="rotate(-8 500 230)"/>
+                <ellipse class="orbit" cx="500" cy="230" rx="380" ry="90" transform="rotate(10 500 230)" stroke-dasharray="2 7"/>
+                <circle class="moon" cx="92" cy="300" r="5"/>
+                <circle class="planet" cx="905" cy="140" r="10"/>
+            </svg>
+
+            <span class="label reveal">05 / Contact</span>
+            <h2 class="reveal" style="margin-top: 1.25rem;">Looking for <br><b>a QA engineer?</b></h2>
+            <p class="lead reveal">I'm based in Nicosia and looking to get back into QA. If your team ships something people rely on, I'd like to hear about it.</p>
+            <div class="actions reveal">
+                <a class="btn solid" href="mailto:valentinenchev16@gmail.com"><i class="fas fa-envelope"></i>valentinenchev16@gmail.com</a>
+                <a class="btn" href="Valentin_Enchev_Resume.pdf" download><i class="fas fa-arrow-down"></i>Resume PDF</a>
+                <a class="btn" href="https://github.com/ValkaYuh"><i class="fab fa-github"></i>GitHub</a>
+                <a class="btn" href="https://linktr.ee/valentinenchev"><i class="fas fa-link"></i>Linktree</a>
             </div>
-        </div>
 
-        <div class="card experience-item">
-            <div class="job-header">
-                <h3 class="job-title">Software QA Engineer</h3>
-                <p class="job-duration">June 2023 &ndash; January 2025</p>
+            <div class="facts reveal">
+                <div>
+                    <span class="label">Languages</span>
+                    <p>English <span>(native)</span>, Greek <span>(proficient)</span>, Bulgarian <span>(proficient)</span></p>
+                </div>
+                <div>
+                    <span class="label">Certification</span>
+                    <p>IELTS Academic, CEFR C1 <span>British Council, 2022</span></p>
+                </div>
+                <div>
+                    <span class="label">Outside work</span>
+                    <p>Esports and gaming, machine learning, hardware and troubleshooting, astrophotography</p>
+                </div>
             </div>
-            <p class="job-company">TalkRemit &middot; Sofia, Bulgaria</p>
-            <ul class="job-description">
-                <li>Contributed significantly to the automation testing project (100+ backend tests written).</li>
-                <li>Played a key role in the transition from our in-house KYC system to a third-party one, by first figuring out how it works and then writing test cases for it.</li>
-                <li>Reported and helped find the cause of multiple hard-to-troubleshoot live bugs.</li>
-                <li>Utilized Apache JMeter to create a load testing suite.</li>
-                <li>Re-worked the front-end manual test suite after a major redesign of our mobile apps.</li>
-            </ul>
-            <div class="tags">
-                <span class="tag">Java</span>
-                <span class="tag">Selenium</span>
-                <span class="tag">Apache JMeter</span>
-                <span class="tag">Postman</span>
-                <span class="tag">Jira</span>
-            </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="card experience-item">
-            <div class="job-header">
-                <h3 class="job-title">Software QA Engineer Internship</h3>
-                <p class="job-duration">November 2022 &ndash; May 2023</p>
-            </div>
-            <p class="job-company">TalkRemit &middot; Sofia, Bulgaria</p>
-            <ul class="job-description">
-                <li>Quickly adapted to Java, a language I had never used before, and started contributing to the backend automation testing project.</li>
-                <li>Contributed to the manual testing suite, both updating old test cases and creating new ones.</li>
-                <li>Executed regression, smoke, and exploratory testing to catch defects pre-release.</li>
-                <li>Got familiar with Jira and the team's communication and work style.</li>
-            </ul>
-            <div class="tags">
-                <span class="tag">Java</span>
-                <span class="tag">Manual QA</span>
-                <span class="tag">Jira</span>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="section-title reveal" style="animation-delay: 0.6s">Skills</h2>
-
-    <section class="skills-grid reveal" style="animation-delay: 0.65s">
-        <div class="card skill-card">
-            <h3><i class="fas fa-vial-circle-check"></i>Testing</h3>
-            <div class="tags">
-                <span class="tag">Manual QA</span>
-                <span class="tag">Automation QA</span>
-                <span class="tag">Selenium</span>
-                <span class="tag">Apache JMeter</span>
-                <span class="tag">BeautifulSoup</span>
-                <span class="tag">TestCaseLab</span>
-                <span class="tag">Jira</span>
-                <span class="tag">Postman</span>
-            </div>
-        </div>
-        <div class="card skill-card">
-            <h3><i class="fas fa-code"></i>Programming</h3>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Java</span>
-                <span class="tag">C++</span>
-            </div>
-        </div>
-        <div class="card skill-card">
-            <h3><i class="fas fa-brain"></i>Machine Learning</h3>
-            <div class="tags">
-                <span class="tag">PyTorch</span>
-                <span class="tag">CatBoost</span>
-                <span class="tag">AutoGluon</span>
-            </div>
-        </div>
-        <div class="card skill-card">
-            <h3><i class="fas fa-shapes"></i>Other</h3>
-            <div class="tags">
-                <span class="tag">Godot</span>
-                <span class="tag">Hardware</span>
-                <span class="tag">Troubleshooting</span>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="section-title reveal" style="animation-delay: 0.7s">Projects</h2>
-
-    <div class="bento-grid reveal" style="animation-delay: 0.75s">
-        <div class="card project-card featured" onclick="showProject('project-ml-detail')">
-            <h3>Valorant Esports Prediction Model<span class="badge">Featured</span></h3>
-            <p>An end-to-end ML pipeline, from a custom data scraper to a trained model, that predicts professional Valorant match outcomes with ~75% accuracy across all pro tiers (VCT, VCL, T3, GC, Collegiate). Backtested against live betting markets with consistent positive ROI.</p>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">PyTorch</span>
-                <span class="tag">CatBoost</span>
-                <span class="tag">AutoGluon</span>
-                <span class="tag">BeautifulSoup</span>
-            </div>
-        </div>
-
-        <div class="card project-card wide" onclick="showProject('project-0-detail')">
-            <h3>FlightInc</h3>
-            <p>A game about spotting and correcting errors in flight details, made in 7 days for the Brackeys 2025 game jam. Ranked #142 in the Innovation category and #664 overall, out of 2,199 entries.</p>
-            <div class="tags">
-                <span class="tag">GDScript</span>
-                <span class="tag">Godot</span>
-            </div>
-        </div>
-
-        <div class="card project-card wide" onclick="showProject('project-1-detail')">
-            <h3>vSec</h3>
-            <p>A Discord security bot that flags malicious links and kicks repeat offenders.</p>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">HTML</span>
-                <span class="tag">Selenium</span>
-            </div>
-        </div>
-
-        <div class="card project-card" onclick="showProject('project-2-detail')">
-            <h3>vFOD</h3>
-            <p>Tool that disables Fullscreen Optimizations for the applications that you select.</p>
-            <div class="tags">
-                <span class="tag">C++</span>
-            </div>
-        </div>
-
-        <div class="card project-card" onclick="showProject('project-3-detail')">
-            <h3>vTracker</h3>
-            <p>A Python script that automatically updates/imports entries in an Excel sheet, mainly used for tracking pro Valorant players' settings.</p>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Selenium</span>
-                <span class="tag">Excel</span>
-            </div>
-        </div>
-
-        <div class="card project-card" onclick="showProject('project-4-detail')">
-            <h3>vFinder</h3>
-            <p>Script that finds the highest damage Jhin build, for the latest patch.</p>
-            <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">RiotAPI</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="project-overlay" id="project-overlay">
-        <div class="project-details">
-            <button class="close-btn" onclick="hideProject()" aria-label="Close">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="project-detail-content"></div>
-        </div>
-    </div>
-
-    <template id="project-ml-detail">
-        <h2>Valorant Esports Prediction Model</h2>
-        <p>This is my biggest self-directed project to date, combining my two favorite things: esports and machine learning. I built the entire pipeline myself: a comprehensive scrape script that collects all the match and player data I need, feature engineering on top of that data, and a model that predicts the outcome of professional Valorant matches.</p>
-        <p>The model reaches ~75% accuracy on evaluation data across all tiers of professional play (VCT, VCL, T3, Game Changers, Collegiate). I analysed feature importance to prune unimportant features and engineer new ones, and validated the model's real-world edge by backtesting its predictions against live betting markets, confirming a consistent positive ROI.</p>
-    </template>
-
-    <template id="project-0-detail">
-        <h2>FlightInc</h2>
-        <p>I've always wanted to make a game, and this is exactly what I did in the Brackeys 2025 game jam. FlightInc is a game inspired by games like Overcooked, where the game is supposed to make you stress a little bit. This was the first time that I developed anything in Godot, so the 7 days weren't quite enough to iron out all the bugs and add everything that I wanted, but I like to think that it was a good first attempt. My good friend Konstantinos Kontargyris did all the art, and I did all the coding.</p>
-        <a href="https://itch.io/jam/brackeys-13/rate/3347380" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
-    </template>
-
-    <template id="project-1-detail">
-        <h2>vSec</h2>
-        <p>I like to build stuff that I would actually use, and this is one of those super useful tools (to me at least). In my friend group's Discord server, we occasionally have people who get infected with a virus that starts spreading malicious links, spamming them in every channel. This bot saves us the hassle of deleting all those messages manually. It even kicks the user after 3 malicious links sent to prevent them from spamming further, making moderation considerably easier, and preventing further infections.</p>
-        <a href="https://github.com/ValkaYuh/vSec" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    </template>
-
-    <template id="project-2-detail">
-        <h2>vFOD</h2>
-        <p>Disabling full-screen optimizations on Windows 10 used to be easy on older builds because you could disable it with one registry edit globally for all programs. Unfortunately, after version 1803, this option was removed, making it very annoying to disable it manually for each program/game. With this tool you can disable it just by navigating to your desired app's directory, eliminating the need to go through multiple menus for each app.</p>
-        <a href="https://github.com/ValkaYuh/vFOD" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    </template>
-
-    <template id="project-3-detail">
-        <h2>vTracker</h2>
-        <p>I'm a big fan of e-sports, which is why I wrote this script. It lets me keep track of what gear and settings my favorite players use without having to manually log their information. The script can generate the base template, and then you can start adding players by pasting their prosettings.net profile link. Once you're done, you can update the whole sheet with one command.</p>
-        <a href="https://github.com/ValkaYuh/vTracker" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    </template>
-
-    <template id="project-4-detail">
-        <h2>vFinder</h2>
-        <p>vFinder is a script that I mostly made to get myself familiar with the Riot API. It gets the latest patch information and calculates the highest damage build for Jhin (a League of Legends character). The script doesn't account for any special status effects since those are written in plain text, but I could in theory use an LLM to account for them too.</p>
-        <a href="https://github.com/ValkaYuh/vFinder" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    </template>
-
-    <footer>
-        <div class="footer-meta">
-            <p><i class="fas fa-language"></i>English (Native) &middot; Greek (Proficient) &middot; Bulgarian (Proficient)</p>
-            <p><i class="fas fa-certificate"></i>IELTS Academic, CEFR Level C1, British Council (2022)</p>
-            <p><i class="fas fa-heart"></i>Esports &amp; gaming &middot; Tech &middot; Machine learning &middot; Astrophotography</p>
-        </div>
-        <div class="social-links">
-            <a href="https://github.com/ValkaYuh" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:valentinenchev16@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://linktr.ee/valentinenchev" aria-label="Linktree"><i class="fas fa-link"></i></a>
-        </div>
+    <footer class="label">
+        <span>Nicosia, Cyprus</span>
+        <a href="#">Back to top <i class="fas fa-arrow-up"></i></a>
+        <span>By ValkaYuh</span>
     </footer>
 
+    <dialog id="project-dialog" aria-labelledby="dialog-title">
+        <button class="close-btn" type="button" aria-label="Close"><i class="fas fa-times"></i></button>
+        <div id="dialog-content"></div>
+    </dialog>
+
+    <!-- ================= PROJECT DETAILS ================= -->
+    <template id="project-ml">
+        <span class="label">Python &middot; Feb 2025 to Jul 2026</span>
+        <h2 id="dialog-title">Valorant Esports Prediction Model</h2>
+        <p>My biggest self directed project so far, and a mix of two things I love: esports and machine learning. I built the whole thing myself, from collecting the data to evaluating the model.</p>
+        <p><b>Data.</b> I wrote a scraper in Python with BeautifulSoup to collect match data across five tiers of professional play (VCT, VCL, Tier 3, Game Changers and Collegiate), then cleaned it and validated the dataset for consistency before using it.</p>
+        <p><b>Model.</b> I trained and evaluated a match outcome model that reaches ~75% accuracy on held out data. Feature importance analysis showed which inputs mattered, so I removed the weak features and engineered new ones to improve it.</p>
+        <p><b>Validation.</b> As an independent check on real world performance, I backtested the predictions against historical betting market odds, and they showed a consistent positive return.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">BeautifulSoup</span><span class="tag">PyTorch</span><span class="tag">CatBoost</span><span class="tag">AutoGluon</span></div>
+    </template>
+
+    <template id="project-flightinc">
+        <span class="label">Godot &middot; Brackeys Game Jam 2025</span>
+        <h2 id="dialog-title">FlightInc</h2>
+        <p>I've always wanted to make a game, so I did it at the Brackeys 2025 game jam. FlightInc takes inspiration from games like Overcooked: it's meant to stress you out a little while you spot and fix errors in flight details before time runs out.</p>
+        <p>It was my first time using Godot, and seven days weren't quite enough to iron out every bug or add everything I had planned, but it shipped on time and ranked <b>#142 in Innovation</b> and <b>#664 overall</b> out of 2,199 entries. My good friend Konstantinos Kontargyris made all the art, and I wrote all the code.</p>
+        <div class="actions"><a class="btn" href="https://itch.io/jam/brackeys-13/rate/3347380"><i class="fab fa-itch-io"></i>Play on itch.io</a></div>
+    </template>
+
+    <template id="project-vsec">
+        <span class="label">Python &middot; Discord bot</span>
+        <h2 id="dialog-title">vSec</h2>
+        <p>I like building things I'll actually use, and this is one of them. Every so often someone in my friend group's Discord server gets infected with malware that spams malicious links in every channel.</p>
+        <p>vSec deletes those messages automatically, so nobody has to clean up by hand, and kicks the user after three malicious links so the spam stops and nobody else gets infected.</p>
+        <div class="actions"><a class="btn" href="https://github.com/ValkaYuh/vSec"><i class="fab fa-github"></i>View on GitHub</a></div>
+    </template>
+
+    <template id="project-vtracker">
+        <span class="label">Python &middot; Selenium &middot; Excel</span>
+        <h2 id="dialog-title">vTracker</h2>
+        <p>I'm a big esports fan, and I wanted to keep track of the gear and settings my favourite players use without logging it all by hand.</p>
+        <p>The script generates the base spreadsheet, then you add players by pasting their prosettings.net profile link. Once they're in, one command updates the whole sheet.</p>
+        <div class="actions"><a class="btn" href="https://github.com/ValkaYuh/vTracker"><i class="fab fa-github"></i>View on GitHub</a></div>
+    </template>
+
+    <template id="project-vfod">
+        <span class="label">C++ &middot; Windows</span>
+        <h2 id="dialog-title">vFOD</h2>
+        <p>On older Windows 10 builds you could turn off Fullscreen Optimizations for every program with a single registry edit. Version 1803 removed that option, so you had to go through several menus for each app or game separately.</p>
+        <p>With vFOD you just point it at the app's folder and it handles the rest.</p>
+        <div class="actions"><a class="btn" href="https://github.com/ValkaYuh/vFOD"><i class="fab fa-github"></i>View on GitHub</a></div>
+    </template>
+
+    <template id="project-vfinder">
+        <span class="label">Python &middot; Riot API</span>
+        <h2 id="dialog-title">vFinder</h2>
+        <p>I built vFinder mostly to get familiar with the Riot API. It pulls the latest patch data and calculates the highest damage build for Jhin, a League of Legends champion.</p>
+        <p>It doesn't account for special item effects yet, because those are only described in plain text. An LLM could in theory parse them, which is a possible next step.</p>
+        <div class="actions"><a class="btn" href="https://github.com/ValkaYuh/vFinder"><i class="fab fa-github"></i>View on GitHub</a></div>
+    </template>
+
     <script>
-        function showProject(templateId) {
-            const template = document.getElementById(templateId);
-            document.getElementById('project-detail-content').innerHTML = template.innerHTML;
-            document.getElementById('project-overlay').classList.add('active');
-        }
+        document.body.classList.remove('no-js');
 
-        function hideProject() {
-            document.getElementById('project-overlay').classList.remove('active');
-        }
+        /* ---------- Project dialog ---------- */
+        const dialog = document.getElementById('project-dialog');
+        const dialogContent = document.getElementById('dialog-content');
 
-        document.getElementById('project-overlay').addEventListener('click', function (e) {
-            if (e.target === this) hideProject();
+        document.querySelectorAll('[data-project]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const tpl = document.getElementById(btn.dataset.project);
+                dialogContent.replaceChildren(tpl.content.cloneNode(true));
+                dialog.showModal();
+            });
         });
 
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideProject();
+        dialog.querySelector('.close-btn').addEventListener('click', function () {
+            dialog.close();
         });
+
+        dialog.addEventListener('click', function (e) {
+            if (e.target === dialog) dialog.close();
+        });
+
+        /* ---------- Scroll reveal ---------- */
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            reveals.forEach(function (el, i) {
+                if (el.closest('.hero')) el.style.transitionDelay = (i * 0.08) + 's';
+                io.observe(el);
+            });
+        } else {
+            reveals.forEach(function (el) { el.classList.add('in'); });
+        }
+
+        /* ---------- Starfield ---------- */
+        (function () {
+            const canvas = document.getElementById('stars');
+            const ctx = canvas.getContext('2d');
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let stars = [];
+            let w, h, dpr;
+
+            function resize() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                const count = Math.round((w * h) / 5200);
+                stars = Array.from({ length: count }, function () {
+                    return {
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        r: Math.random() < 0.94 ? Math.random() * 0.9 + 0.2 : Math.random() * 1.4 + 1,
+                        a: Math.random() * 0.6 + 0.15,
+                        s: Math.random() * 0.002 + 0.0005,
+                        p: Math.random() * Math.PI * 2
+                    };
+                });
+            }
+
+            function draw(t) {
+                ctx.clearRect(0, 0, w, h);
+                const shift = reduced ? 0 : window.scrollY * 0.04;
+                for (const s of stars) {
+                    const alpha = reduced ? s.a : s.a * (0.6 + 0.4 * Math.sin(t * s.s + s.p));
+                    const y = ((s.y - shift * s.r) % h + h) % h;
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = '#f1eee6';
+                    ctx.beginPath();
+                    ctx.arc(s.x, y, s.r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                if (!reduced) requestAnimationFrame(draw);
+            }
+
+            resize();
+            window.addEventListener('resize', function () {
+                resize();
+                if (reduced) draw(0);
+            });
+            requestAnimationFrame(draw);
+        })();
     </script>
 </body>
 </html>
