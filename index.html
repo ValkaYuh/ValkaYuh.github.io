@@ -755,6 +755,14 @@
             font-stretch: 118%;
         }
 
+        .project .proj-date {
+            display: block;
+            margin-top: 0.8rem;
+            font-weight: 400;
+            font-stretch: 100%;
+            letter-spacing: 0.14em;
+        }
+
         .project .desc {
             color: var(--paper-dim);
             font-size: 0.95rem;
@@ -1167,17 +1175,6 @@
 
             <article class="role reveal">
                 <div class="role-meta">
-                    <span class="label">Feb 2025 to Jul 2026</span>
-                    <p class="where">Self directed</p>
-                </div>
-                <div>
-                    <h3>Independent projects</h3>
-                    <p class="context">Time spent building things end to end: collecting and validating data, training and evaluating a model, checking it against real world outcomes, and shipping a game in a week. Both are in <a href="#projects">Projects</a> below.</p>
-                </div>
-            </article>
-
-            <article class="role reveal">
-                <div class="role-meta">
                     <span class="label">Jun 2023 to Jan 2025</span>
                     <p class="where">TalkRemit<br>Sofia, Bulgaria</p>
                 </div>
@@ -1278,7 +1275,7 @@
                 <li class="project featured reveal">
                     <button type="button" data-project="project-ml">
                         <span class="num">01</span>
-                        <h3>Valorant Prediction Model</h3>
+                        <h3>Valorant Prediction Model <span class="label proj-date">Python &middot; 02/2025 to 07/2026</span></h3>
                         <span class="desc">A scraper, a cleaned dataset and a trained model that predicts professional Valorant matches with ~75% accuracy on held out data, across five tiers of pro play.
                             <span class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">CatBoost</span><span class="tag">AutoGluon</span></span>
                         </span>
@@ -1288,7 +1285,7 @@
                 <li class="project featured reveal">
                     <button type="button" data-project="project-flightinc">
                         <span class="num">02</span>
-                        <h3>FlightInc</h3>
+                        <h3>FlightInc <span class="label proj-date">Godot &middot; 2025</span></h3>
                         <span class="desc">A game about spotting and fixing errors in flight details, built and shipped in one week for the Brackeys 2025 game jam. Ranked #142 in Innovation out of 2,199 entries.
                             <span class="tags"><span class="tag">Godot</span><span class="tag">GDScript</span></span>
                         </span>
@@ -1389,7 +1386,7 @@
     <template id="project-ml">
         <span class="label">Python &middot; Feb 2025 to Jul 2026</span>
         <h2 id="dialog-title">Valorant Esports Prediction Model</h2>
-        <p>My biggest self directed project so far, and a mix of two things I love: esports and machine learning. I built the whole thing myself, from collecting the data to evaluating the model.</p>
+        <p>My biggest project so far, and a mix of two things I love: esports and machine learning. I built the whole thing myself, from collecting the data to evaluating the model.</p>
         <p><b>Data.</b> I wrote a scraper in Python with BeautifulSoup to collect match data across five tiers of professional play (VCT, VCL, Tier 3, Game Changers and Collegiate), then cleaned it and validated the dataset for consistency before using it.</p>
         <p><b>Model.</b> I trained and evaluated a match outcome model that reaches ~75% accuracy on held out data. Feature importance analysis showed which inputs mattered, so I removed the weak features and engineered new ones to improve it.</p>
         <p><b>Validation.</b> As an independent check on real world performance, I backtested the predictions against historical betting market odds, and they showed a consistent positive return.</p>
